@@ -283,7 +283,7 @@ const SuperMenu = ({ isOpen, onClose, onRouteChange }) => {
   );
 };
 
-// --- COMPONENTE: CAPSULE HEADER ---
+// --- COMPONENTE: CAPSULE HEADER (RED BULL STYLE) ---
 
 const CapsuleHeader = ({ onRouteChange, currentRoute }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -301,53 +301,64 @@ const CapsuleHeader = ({ onRouteChange, currentRoute }) => {
     <>
       <SuperMenu isOpen={superMenuOpen} onClose={() => setSuperMenuOpen(false)} onRouteChange={onRouteChange} />
 
-      <div className="fixed top-2 md:top-4 lg:top-6 left-0 right-0 z-50 pointer-events-none">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 flex justify-center">
-          <div className={cn(
-            "pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] w-full w-full",
-            "relative flex items-center justify-between",
-            "bg-[#1E3250] border border-[#1E3250] shadow-2xl",
-            isScrolled ? "max-w-5xl rounded-full py-2 px-4 shadow-[#000]/30" : "max-w-full rounded-xl md:rounded-2xl py-2.5 md:py-3 px-4 md:px-6 lg:px-8"
-          )}>
-
-          <div className="flex items-center gap-2 md:gap-6 z-20 relative shrink-0">
+      <header className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full",
+        isScrolled ? "bg-[#0B1220] shadow-2xl py-2" : "bg-gradient-to-b from-black/80 to-transparent py-4 md:py-6"
+      )}>
+        <div className="container mx-auto max-w-[1536px] px-4 md:px-8 flex items-center justify-between">
+          
+          {/* Logo e Menu Esquerda */}
+          <div className="flex items-center gap-4 md:gap-6 w-1/3">
             <button
               onClick={() => setSuperMenuOpen(true)}
-              className="group flex items-center gap-2 p-1.5 md:p-2 md:pr-4 rounded-full bg-white text-[#1E3250] hover:bg-[#EEF2F7] transition-all shadow-md active:scale-95"
+              className="text-white hover:text-[#CCB146] transition-colors p-2 flex items-center gap-2"
             >
-              <Menu className="w-4 h-4 md:w-5 md:h-5 text-[#1E3250]" />
-              <span className="hidden lg:block text-[10px] font-black uppercase tracking-widest text-[#1E3250]">Menu</span>
+              <Menu className="w-6 h-6 md:w-8 md:h-8" />
             </button>
-
-            <div className="h-6 w-px bg-white/10 hidden md:block"></div>
-
-            <button onClick={() => onRouteChange && onRouteChange('home')} className="flex items-center gap-2 select-none cursor-pointer text-left focus:outline-none group">
-              <div className="w-7 h-7 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center text-[#1E3250] shadow-sm group-hover:scale-105 transition-transform">
-                <Globe className="w-4 h-4 md:w-5 md:h-5" />
-              </div>
-              <div className={cn("flex flex-col transition-opacity duration-300", isScrolled && "hidden xl:flex")}>
-                <span className="font-black text-[9px] md:text-[10px] md:text-xs tracking-tight uppercase text-white leading-none mb-[1px] md:mb-[2px] group-hover:text-[#CCB146] transition-colors">UN Global Compact</span>
-                <span className="hidden md:block text-[8px] md:text-[9px] tracking-[0.2em] opacity-80 uppercase text-white leading-none">Rede Brasil</span>
+            <button onClick={() => onRouteChange && onRouteChange('home')} className="flex items-center gap-2 group hidden sm:flex">
+              <Globe className="w-6 h-6 md:w-8 md:h-8 text-white group-hover:text-[#CCB146] transition-colors" />
+              <div className="flex flex-col text-left">
+                <span className="font-black text-[10px] md:text-xs tracking-tighter uppercase text-white leading-none">UN Global Compact</span>
+                <span className="text-[8px] md:text-[9px] tracking-widest text-[#CCB146] uppercase leading-none mt-0.5">Rede Brasil</span>
               </div>
             </button>
           </div>
 
-          <div className="flex items-center justify-end gap-1.5 md:gap-3 z-20 relative shrink-0">
-            <Button variant="primary" className={cn("whitespace-nowrap shadow-none md:shadow-lg text-[9px] md:text-xs px-3 py-1.5 md:px-4 md:py-2", isScrolled ? "md:text-[9px]" : "")}>
-              Quero Aderir
-            </Button>
-            <Button variant="login" className="hidden sm:flex text-[9px] md:text-xs" icon={LogIn}>
-              Entrar
+          {/* Pílula Central (Menu Rápido) */}
+          <div className="hidden lg:flex w-1/3 justify-center">
+            <nav className="flex items-center gap-8 bg-[#0B1220]/60 backdrop-blur-md rounded-full px-10 py-3 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+              {[ {label: 'Pacto Global', id: 'home'}, {label: 'Notícias', id: null}, {label: 'Conhecimento', id: null}, {label: 'CoP', id: 'cop'} ].map(item => (
+                <button
+                  key={item.label}
+                  onClick={() => item.id ? onRouteChange(item.id) : setSuperMenuOpen(true)}
+                  className="text-white hover:text-[#CCB146] text-[11px] font-bold uppercase tracking-widest transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          {/* Ferramentas Direita */}
+          <div className="flex items-center justify-end gap-2 md:gap-4 w-1/3">
+            <button onClick={() => setSuperMenuOpen(true)} className="text-white hover:text-[#CCB146] transition-colors p-2">
+              <Search className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+            <button className="text-white hover:text-[#CCB146] transition-colors p-2">
+              <LogIn className="w-5 h-5 md:w-6 md:h-6" />
+            </button>
+            <Button variant="primary" className="hidden xl:flex text-[10px] px-5 py-2">
+              Área do Participante
             </Button>
           </div>
+
         </div>
-       </div>
-      </div>
+      </header>
     </>
   );
 };
 
-// --- COMPONENTE: HERO CARROSSEL ---
+// --- COMPONENTE: HERO CARROSSEL (RED BULL STYLE) ---
 
 const HeroCarousel = () => {
   const [current, setCurrent] = useState(0);
@@ -359,78 +370,57 @@ const HeroCarousel = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-
   return (
-    <section className="relative pt-20 md:pt-28 pb-6 md:pb-12 w-full">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-        <div className="relative w-full h-[60vh] md:h-[65vh] lg:h-[80vh] rounded-2xl md:rounded-[40px] overflow-hidden shadow-2xl bg-[#0B1220] group touch-pan-y">
+    <section className="relative w-full h-[85vh] md:h-screen min-h-[600px] overflow-hidden bg-[#0B1220] group touch-pan-y">
+      {HERO_SLIDES.map((slide, index) => (
+        <div
+          key={slide.id}
+          className={cn(
+            "absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] w-full",
+            index === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
+          )}
+        >
+          <img src={slide.image} alt={slide.badge} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-black/40 to-transparent opacity-95"></div>
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
 
-        {HERO_SLIDES.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={cn(
-              "absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] w-full",
-              index === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-105 z-0"
-            )}
-          >
-            <img src={slide.image} alt={slide.badge} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1E3250] via-[#1E3250]/40 to-transparent opacity-90"></div>
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
+          <div className="absolute bottom-16 md:bottom-24 left-4 md:left-12 lg:left-24 z-20 w-full max-w-4xl pr-4">
+            <div className={cn("transition-all duration-1000 delay-300 transform", index === current ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0")}>
+              <Badge color="bg-[#DB0032] text-white shadow-lg mb-4 md:mb-6">{slide.badge}</Badge>
 
-            <div className="absolute inset-0 flex flex-col justify-center items-center px-4 md:px-12 text-center z-20">
-              <div className={cn("transition-all duration-1000 delay-300 transform max-w-3xl", index === current ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0")}>
-                <Badge color="bg-white text-[#1E3250] shadow-lg mb-4 md:mb-6">{slide.badge}</Badge>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9] drop-shadow-2xl mb-4 md:mb-6">
+                {slide.title}<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CCB146] to-white">{slide.subtitle}</span>
+              </h1>
 
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[1.0] md:leading-[0.95] drop-shadow-2xl mb-4 md:mb-6">
-                  {slide.title}<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#CCB146] to-white">{slide.subtitle}</span>
-                </h1>
-
-                <p className="text-xs sm:text-sm md:text-base lg:text-xl text-[#AECFE6] max-w-xs md:max-w-lg mx-auto font-medium leading-relaxed mb-6 md:mb-10 line-clamp-3 md:line-clamp-none">
-                  {slide.desc}
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center w-full sm:w-auto px-4 sm:px-0">
-                  <Button variant="primary" icon={ArrowRight} className="w-full sm:w-auto">{slide.ctaPrimary}</Button>
-                  <Button variant="outline" icon={Play} className="w-full sm:w-auto">{slide.ctaSecondary}</Button>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 mt-8">
+                <Button variant="primary" icon={ArrowRight} className="bg-[#DB0032] hover:bg-white hover:text-[#DB0032] shadow-[#DB0032]/20 text-xs md:text-sm px-6 py-3 md:px-8 md:py-4">
+                  {slide.ctaPrimary}
+                </Button>
+                <div className="flex items-center text-[#AECFE6] text-xs md:text-sm font-medium hover:text-white transition-colors cursor-pointer">
+                  <Play className="w-4 h-4 mr-2" />
+                  {slide.ctaSecondary} <span className="mx-2 opacity-50">•</span> 3 min
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      ))}
+
+      {/* Slider Progress Indicator (Red Bull Horizontal Dots) */}
+      <div className="absolute bottom-6 left-4 md:left-12 lg:left-24 flex items-center gap-2 z-30">
+        {HERO_SLIDES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrent(idx)}
+            className={cn(
+              "h-1 md:h-1.5 rounded-full transition-all duration-500 ease-out",
+              current === idx ? "w-12 md:w-16 bg-[#CCB146]" : "w-2 md:w-3 bg-white/40 hover:bg-white"
+            )}
+            aria-label={`Ir para slide ${idx + 1}`}
+          />
         ))}
-
-        <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2 md:gap-3 z-30 hidden sm:flex">
-          {HERO_SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrent(idx)}
-              className={cn(
-                "w-1 rounded-full transition-all duration-500 ease-out",
-                current === idx ? "h-8 md:h-12 bg-[#CCB146]" : "h-2 bg-white/40 hover:bg-white hover:h-4"
-              )}
-              aria-label={`Ir para slide ${idx + 1}`}
-            />
-          ))}
-        </div>
-
-        <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 flex gap-2 md:gap-3 z-30">
-          <button
-            onClick={prevSlide}
-            className="p-2 md:p-3 rounded-full border border-white/10 text-white hover:bg-white hover:text-[#1E3250] hover:border-white transition-all backdrop-blur-sm bg-black/10"
-          >
-            <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="p-2 md:p-3 rounded-full border border-white/10 text-white hover:bg-white hover:text-[#1E3250] hover:border-white transition-all backdrop-blur-sm bg-black/10"
-          >
-            <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
-          </button>
-        </div>
       </div>
-     </div>
     </section>
   );
 };
