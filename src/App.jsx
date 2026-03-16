@@ -326,16 +326,32 @@ const CapsuleHeader = ({ onRouteChange, currentRoute }) => {
 
           {/* Pílula Central (Menu Rápido) */}
           <div className="hidden lg:flex w-1/3 justify-center">
-            <nav className="flex items-center gap-8 bg-[#0B1220]/60 backdrop-blur-md rounded-full px-10 py-3 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-              {[ {label: 'Pacto Global', id: 'home'}, {label: 'Notícias', id: null}, {label: 'Conhecimento', id: null}, {label: 'CoP', id: 'cop'} ].map(item => (
+            <nav className="flex items-center gap-6 bg-[#0B1220]/60 backdrop-blur-md rounded-full px-8 py-2.5 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+              {[ {label: 'Sobre nós', id: null}, {label: 'Notícias', id: null}, {label: 'ESG', id: null} ].map(item => (
                 <button
                   key={item.label}
                   onClick={() => item.id ? onRouteChange(item.id) : setSuperMenuOpen(true)}
-                  className="text-white hover:text-[#CCB146] text-[11px] font-bold uppercase tracking-widest transition-colors"
+                  className="text-white hover:text-[#CCB146] text-[11px] font-bold uppercase tracking-widest transition-colors whitespace-nowrap"
                 >
                   {item.label}
                 </button>
               ))}
+              
+              {/* Dropdown Conhecimento */}
+              <div className="relative group">
+                <button className="flex items-center gap-1 text-white group-hover:text-[#CCB146] text-[11px] font-bold uppercase tracking-widest transition-colors py-1.5 whitespace-nowrap">
+                  Conhecimento <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                </button>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[#1E3250]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                   <div className="py-2 flex flex-col">
+                      {['Publicações', 'Academy', 'Cursos & Workshops'].map(sub => (
+                        <button key={sub} onClick={() => setSuperMenuOpen(true)} className="text-left px-5 py-3 text-[11px] text-white/80 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-widest font-bold">
+                          {sub}
+                        </button>
+                      ))}
+                   </div>
+                </div>
+              </div>
             </nav>
           </div>
 
