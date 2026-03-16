@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     rel="stylesheet">
 
   <!-- Tailwind CDN (garante que funcione independente do PostCSS) -->
@@ -21,17 +21,20 @@
       theme: {
         extend: {
           colors: {
-            'un-blue': '#0A192F',
-            'un-blue-light': '#1E3250',
-            'un-gold': '#CCB146',
-            'un-green': '#297D6D',
-            'un-red': '#E43D43',
+            'un-blue': '#1E3250',
+            'un-blue-1': '#4C6B8B',
+            'un-blue-2': '#699CC6',
+            'un-blue-3': '#AECFE6',
             'un-purple': '#6E417A',
-            'un-gray': '#F8F9FA',
+            'un-green': '#297D6D',
+            'un-gold': '#CCB146',
+            'un-red': '#EC3740',
+            'un-gray': '#F8F9FA'
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            serif: ['Merriweather', 'Georgia', 'serif'],
+            sans: ['Roboto', 'system-ui', 'sans-serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            display: ['Flama', 'Roboto', 'sans-serif']
           },
         },
       },
@@ -39,7 +42,7 @@
   </script>
   <style>
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Roboto', system-ui, sans-serif;
       background-color: #F8F9FA;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;

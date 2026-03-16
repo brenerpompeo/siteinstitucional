@@ -7,17 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'un-blue': '#0A192F',
-        'un-blue-light': '#1E3250',
-        'un-gold': '#CCB146',
-        'un-green': '#297D6D',
-        'un-red': '#E43D43',
+        'un-blue': '#1E3250',
+        'un-blue-1': '#4C6B8B',
+        'un-blue-2': '#699CC6',
+        'un-blue-3': '#AECFE6',
         'un-purple': '#6E417A',
+        'un-green': '#297D6D',
+        'un-gold': '#CCB146',
+        'un-red': '#EC3740',
         'un-gray': '#F8F9FA'
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['Merriweather', 'serif']
+        sans: ['Roboto', 'system-ui', 'sans-serif'],
+        serif: ['Lora', 'Georgia', 'serif'],
+        display: ['Flama', 'Roboto', 'sans-serif']
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
