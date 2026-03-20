@@ -1076,6 +1076,11 @@ const PillaresSection = () => {
               </div>
             </div>
           </div>
+          <div className="flex justify-center mt-10">
+            <a href="#" className="inline-flex items-center gap-2 bg-un-blue text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-full hover:bg-un-blue-1 transition-colors duration-300 shadow-md hover:shadow-lg">
+              Saiba Mais <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
       </div>
