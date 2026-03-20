@@ -22,35 +22,43 @@ const cn = (...classes) => classes.filter(Boolean).join(' ');
 const MOCK_EVENTS = [
   {
     id: 1,
-    date: "15",
-    month: "MAI",
-    title: "Fórum de Liderança com Propósito - Edição 2026",
-    location: "São Paulo, SP | Híbrido",
-    type: "Temático"
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
+    title: "Fórum de Liderança com Propósito — Edição 2026",
+    dateRange: "18 Março — 20 Junho 2026",
+    location: "São Paulo, Brasil",
+    category: "LIDERANÇA",
+    status: "upcoming",
+    statusLabel: "Inscrições abertas"
   },
   {
     id: 2,
-    date: "02-04",
-    month: "JUN",
-    title: "Encontro Nacional da Rede Brasil - 25 Anos",
-    location: "Rio de Janeiro, RJ | Presencial",
-    type: "Institucional"
+    image: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop",
+    title: "Encontro Nacional da Rede Brasil — 25 Anos",
+    dateRange: "2 — 4 Junho 2026",
+    location: "Rio de Janeiro, Brasil",
+    category: "INSTITUCIONAL",
+    status: "pending",
+    statusLabel: "Aguardando detalhes"
   },
   {
     id: 3,
-    date: "18",
-    month: "AGO",
-    title: "Diálogos sobre Direitos Humanos & DEI",
-    location: "Online | Exclusivo Participantes",
-    type: "Webinar"
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop",
+    title: "Diálogos DH & DEI — Ciclo 2026",
+    dateRange: "18 Agosto 2026",
+    location: "Online",
+    category: "DIREITOS HUMANOS",
+    status: "upcoming",
+    statusLabel: "Inscrições abertas"
   },
   {
     id: 4,
-    date: "25",
-    month: "SET",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
     title: "Ambição 2030: O Impacto das Metas Climáticas",
-    location: "Online | Aberto",
-    type: "Academy"
+    dateRange: "25 Setembro 2026",
+    location: "Online",
+    category: "ACADEMY",
+    status: "pending",
+    statusLabel: "Aguardando detalhes"
   }
 ];
 
@@ -721,50 +729,99 @@ const Footer = () => (
 // --- MAIN APP ---
 
 
-const EventsListSection = () => (
-  <section className="bg-[#1E3250] text-white py-16 md:py-24 border-t border-white/10">
+const EventCard = ({ event }) => (
+  <a href="#" className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300">
+    {/* Image */}
+    <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+      <img
+        src={event.image}
+        alt={event.title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+
+    {/* Card Body */}
+    <div className="flex flex-col flex-1 p-5">
+      <h3 className="text-base font-bold text-gray-900 leading-snug mb-3 group-hover:text-un-blue transition-colors">
+        {event.title}
+      </h3>
+      <div className="flex items-center gap-2 text-sm text-gray-500 mb-1">
+        <Calendar className="w-4 h-4 shrink-0" />
+        <span>{event.dateRange}</span>
+      </div>
+      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+        <MapPin className="w-4 h-4 shrink-0" />
+        <span>{event.location}</span>
+      </div>
+      <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">{event.category}</p>
+
+      {/* Status Badge */}
+      <div className="mt-auto pt-4 border-t border-gray-100">
+        {event.status === 'upcoming' ? (
+          <div className="flex items-center gap-2 text-sm font-semibold text-un-blue">
+            <div className="w-4 h-4 rounded border border-un-blue flex items-center justify-center">
+              <div className="w-2 h-2 bg-un-blue rounded-sm" />
+            </div>
+            {event.statusLabel}
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 text-sm font-semibold text-gray-400">
+            <div className="w-4 h-4 rounded border border-gray-300 flex items-center justify-center">
+              <div className="w-2 h-2 bg-gray-300 rounded-full" />
+            </div>
+            {event.statusLabel}
+          </div>
+        )}
+      </div>
+    </div>
+  </a>
+);
+
+const EventsListSection = () => {
+  const [activeTab, setActiveTab] = React.useState('upcoming');
+  return (
+  <section className="py-12 md:py-16 bg-[#F8F9FB]">
     <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 border-b border-white/20 pb-6 gap-4">
-        <div>
-          <span className="text-un-gold font-bold text-[10px] md:text-xs uppercase tracking-widest mb-2 block">Próximos Encontros</span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-black uppercase text-white leading-none">Nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-un-blue-3">Agenda</span></h2>
+      {/* Header row */}
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-6">
+          <h2 className="text-2xl md:text-3xl font-display font-black text-gray-900">Eventos</h2>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setActiveTab('upcoming')}
+              className={`text-sm font-bold pb-1 transition-colors relative ${activeTab === 'upcoming' ? 'text-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+            >
+              Vem aí
+              {activeTab === 'upcoming' && <span className="absolute -bottom-0 left-0 right-0 h-0.5 bg-un-red rounded-full" />}
+            </button>
+            <button
+              onClick={() => setActiveTab('past')}
+              className={`text-sm font-bold pb-1 transition-colors relative ${activeTab === 'past' ? 'text-gray-900' : 'text-gray-400 hover:text-gray-700'}`}
+            >
+              Anteriores
+              {activeTab === 'past' && <span className="absolute -bottom-0 left-0 right-0 h-0.5 bg-un-red rounded-full" />}
+            </button>
+          </div>
         </div>
-        <Button variant="outline" className="border-white/20 hover:border-un-gold text-xs shrink-0 self-start md:self-auto hidden md:inline-flex">Ver Calendário Completo</Button>
+        <a href="#" className="hidden md:flex items-center gap-1 text-sm font-bold text-gray-700 hover:text-un-blue transition-colors border border-gray-300 rounded-full px-4 py-2 hover:border-un-blue">
+          Ver todos <ChevronRight className="w-4 h-4" />
+        </a>
       </div>
 
-      <div className="flex flex-col border-b border-white/10">
-        {MOCK_EVENTS.map((evt, idx) => (
-          <a key={evt.id} href="#" className={`group flex flex-col md:flex-row items-start md:items-center p-6 md:p-8 hover:bg-white/5 transition-all duration-300 ${idx !== 0 ? 'border-t border-white/5' : ''}`}>
-            {/* Left Col: Date */}
-            <div className="flex flex-col items-center justify-center w-24 md:w-32 shrink-0 border-l-4 border-transparent group-hover:border-un-gold transition-colors pl-4 md:pl-0 mb-4 md:mb-0">
-              <span className="text-3xl md:text-5xl font-display font-black leading-none tracking-tighter text-white group-hover:text-un-gold transition-colors">{evt.date}</span>
-              <span className="text-xs md:text-sm font-bold uppercase tracking-widest text-un-blue-3 mt-1 group-hover:text-white transition-colors">{evt.month}</span>
-            </div>
-            
-            {/* Middle Col: Title & Info */}
-            <div className="flex-1 flex flex-col px-4 md:px-8 border-l border-white/10 ml-0 md:ml-4">
-              <span className="text-[10px] text-un-gold uppercase tracking-widest font-black mb-1">{evt.type}</span>
-              <h3 className="text-xl md:text-3xl font-display font-black uppercase tracking-tight text-white mb-2 group-hover:text-un-blue-3 transition-colors">{evt.title}</h3>
-              <div className="flex items-center gap-2 text-xs md:text-sm font-bold text-un-blue-3">
-                <MapPin className="w-3 h-3 md:w-4 md:h-4" />
-                <span>{evt.location}</span>
-              </div>
-            </div>
-            
-            {/* Right Col: CTA (Arrow) */}
-            <div className="w-full md:w-auto flex justify-end shrink-0 mt-6 md:mt-0 px-4 md:px-8">
-              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-un-gold group-hover:border-un-gold transition-all duration-300 transform group-hover:scale-110">
-                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:text-[#1E3250] transition-colors" />
-              </div>
-            </div>
-          </a>
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        {MOCK_EVENTS.map(evt => (
+          <EventCard key={evt.id} event={evt} />
         ))}
       </div>
-      
-      <Button variant="outline" className="w-full border-white/20 hover:border-un-gold text-xs mt-8 md:hidden">Ver Calendário Completo</Button>
+
+      <a href="#" className="flex md:hidden items-center justify-center gap-1 text-sm font-bold text-gray-700 border border-gray-300 rounded-full px-4 py-2 mt-8 hover:border-un-blue hover:text-un-blue transition-colors">
+        Ver todos <ChevronRight className="w-4 h-4" />
+      </a>
     </div>
   </section>
-);
+  );
+};
 
 const HomeContent = () => (
   <div className="animate-fade-in">
