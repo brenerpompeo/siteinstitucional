@@ -1056,6 +1056,9 @@ const PillaresSection = () => {
               <p className="text-gray-500 text-sm leading-relaxed">
                 Os ODS são nosso norte para um futuro mais justo e sustentável, são integrados e indivisíveis, e mesclam, de forma equilibrada, as <strong className="text-gray-800">três dimensões do desenvolvimento sustentável: a econômica, a social e a ambiental</strong>. São universais e tem em seu cerne <strong className="text-gray-800">"não deixar ninguém para trás"</strong>.
               </p>
+              <a href="#" className="inline-flex items-center gap-2 bg-un-blue text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-full hover:bg-un-blue-1 transition-colors duration-300 shadow-md hover:shadow-lg mt-6">
+                Saiba Mais <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
             <div className="lg:w-3/5 flex items-center">
               <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-6 gap-3 w-full">
@@ -1076,11 +1079,7 @@ const PillaresSection = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center mt-10">
-            <a href="#" className="inline-flex items-center gap-2 bg-un-blue text-white font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-full hover:bg-un-blue-1 transition-colors duration-300 shadow-md hover:shadow-lg">
-              Saiba Mais <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+
         </div>
 
       </div>
