@@ -363,12 +363,8 @@ const SuperMenu = ({ isOpen, onClose, onRouteChange }) => {
 
       <div className="flex justify-between items-center p-4 md:p-8 border-b border-white/10 shrink-0">
         <div className="flex items-center gap-3 md:gap-4">
-          <button onClick={() => handleNav('home')} className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center text-un-blue hover:scale-105 transition-transform">
-            <Globe className="w-5 h-5 md:w-6 md:h-6" />
-          </button>
-          <button onClick={() => handleNav('home')} className="flex flex-col text-left">
-            <span className="text-white font-display font-black text-sm md:text-lg uppercase tracking-tight leading-none hover:text-un-gold transition-colors">UN Global Compact</span>
-            <span className="text-un-gold text-[8px] md:text-[10px] uppercase tracking-[0.2em] leading-none mt-1">Menu Principal</span>
+          <button onClick={() => handleNav('home')} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-8 md:h-10 w-auto" />
           </button>
         </div>
 
@@ -487,12 +483,8 @@ const CapsuleHeader = ({ onRouteChange, currentRoute }) => {
             >
               <Menu className="w-6 h-6 md:w-8 md:h-8" />
             </button>
-            <button onClick={() => onRouteChange && onRouteChange('home')} className="flex items-center gap-2 group hidden sm:flex">
-              <Globe className="w-6 h-6 md:w-8 md:h-8 text-white group-hover:text-un-gold transition-colors" />
-              <div className="flex flex-col text-left">
-                <span className="font-display font-black text-[10px] md:text-xs tracking-tighter uppercase text-white leading-none">UN Global Compact</span>
-                <span className="text-[8px] md:text-[9px] tracking-widest text-un-gold uppercase leading-none mt-0.5">Rede Brasil</span>
-              </div>
+            <button onClick={() => onRouteChange && onRouteChange('home')} className="hidden sm:flex items-center group hover:opacity-80 transition-opacity">
+              <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-7 md:h-9 w-auto" />
             </button>
           </div>
 
@@ -753,12 +745,7 @@ const Footer = () => (
   <footer className="bg-un-blue text-white pt-12 md:pt-16 lg:pt-24 pb-8 md:pb-12 border-t border-white/10">
     <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
       <div className="lg:col-span-2 space-y-6">
-        <h2 className="text-xl md:text-2xl font-display font-black uppercase tracking-tight flex items-center gap-3">
-          <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-full flex items-center justify-center text-un-blue">
-            <Globe className="w-5 h-5 md:w-6 md:h-6" />
-          </div>
-          UN Global Compact
-        </h2>
+        <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-10 md:h-12 w-auto" />
         <p className="text-un-blue-3 max-w-sm leading-relaxed text-xs md:text-sm">
           Como uma iniciativa especial do Secretário-Geral da ONU, o Pacto Global das Nações Unidas é um chamado para que as empresas alinhem suas estratégias e operações com Dez Princípios universais.
         </p>
