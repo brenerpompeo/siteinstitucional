@@ -22,6 +22,9 @@ export default {
         serif: ['Lora', 'Georgia', 'serif'],
         display: ['Flama', 'Roboto', 'sans-serif']
       },
+      gridTemplateColumns: {
+        '17': 'repeat(17, minmax(0, 1fr))',
+      },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.8s ease-out',
