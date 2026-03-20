@@ -1619,13 +1619,13 @@ const CopPage = () => {
                  return (
                  <div className="relative rounded-[2rem] overflow-hidden shadow-lg border border-un-blue/10 bg-[#F6F8FB]">
                    {/* Carousel */}
-                   <div className="relative w-full aspect-[4/3] overflow-hidden">
+                   <div className="relative w-full overflow-hidden bg-white">
                      {DASH_IMAGES.map((img, idx) => (
                        <img
                          key={idx}
                          src={img.src}
                          alt={img.alt}
-                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${dashSlide === idx ? 'opacity-100' : 'opacity-0'}`}
+                         className={`w-full h-auto transition-all duration-700 ${dashSlide === idx ? 'block opacity-100' : 'hidden opacity-0'}`}
                        />
                      ))}
                      {/* Dots */}
