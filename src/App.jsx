@@ -1605,25 +1605,65 @@ const CopPage = () => {
               </div>
             </div>
             <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
-               <div className="bg-[#F6F8FB] rounded-[2rem] p-8 md:p-12 aspect-square md:aspect-video lg:aspect-square flex items-center justify-center border border-un-blue/10 relative overflow-hidden group shadow-lg">
-                 <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')] transition-opacity group-hover:opacity-10"></div>
-                 <BarChart3 className="w-32 h-32 md:w-48 md:h-48 text-un-blue/5 group-hover:scale-110 transition-transform duration-500" />
-                 
-                 <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 bg-white p-4 md:p-5 rounded-2xl shadow-xl flex items-center justify-between hover:ring-2 hover:ring-un-green cursor-pointer transition-all">
-                   <div className="flex items-center gap-3 md:gap-4">
-                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-un-gold/20 flex items-center justify-center">
-                       <Target className="w-5 h-5 md:w-6 md:h-6 text-un-gold" />
+               {(() => {
+                 const DASH_IMAGES = [
+                   { src: `${import.meta.env.BASE_URL}cop-dashboard/dashboard-1.jpeg`, alt: 'Dashboard CoP - Visão Geral' },
+                   { src: `${import.meta.env.BASE_URL}cop-dashboard/dashboard-2.png`, alt: 'Dashboard CoP - Indicadores' },
+                   { src: `${import.meta.env.BASE_URL}cop-dashboard/dashboard-3.png`, alt: 'Dashboard CoP - Comparativos' },
+                 ];
+                 const [dashSlide, setDashSlide] = React.useState(0);
+                 React.useEffect(() => {
+                   const t = setInterval(() => setDashSlide(p => (p + 1) % DASH_IMAGES.length), 4000);
+                   return () => clearInterval(t);
+                 }, []);
+                 return (
+                 <div className="relative rounded-[2rem] overflow-hidden shadow-lg border border-un-blue/10 bg-[#F6F8FB]">
+                   {/* Carousel */}
+                   <div className="relative w-full aspect-[4/3] overflow-hidden">
+                     {DASH_IMAGES.map((img, idx) => (
+                       <img
+                         key={idx}
+                         src={img.src}
+                         alt={img.alt}
+                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${dashSlide === idx ? 'opacity-100' : 'opacity-0'}`}
+                       />
+                     ))}
+                     {/* Dots */}
+                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                       {DASH_IMAGES.map((_, idx) => (
+                         <button
+                           key={idx}
+                           onClick={() => setDashSlide(idx)}
+                           className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${dashSlide === idx ? 'bg-white scale-125 shadow-md' : 'bg-white/50 hover:bg-white/80'}`}
+                         />
+                       ))}
                      </div>
-                     <div>
-                       <p className="text-[10px] md:text-xs text-[#4C6B8B] font-bold uppercase tracking-widest">Acesso Público</p>
-                       <p className="text-sm md:text-base font-display font-black text-un-blue">Explorar Dashboard</p>
+                     {/* Arrows */}
+                     <button onClick={() => setDashSlide(p => (p - 1 + DASH_IMAGES.length) % DASH_IMAGES.length)} className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white transition-colors z-10">
+                       <ChevronLeft className="w-5 h-5 text-un-blue" />
+                     </button>
+                     <button onClick={() => setDashSlide(p => (p + 1) % DASH_IMAGES.length)} className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white transition-colors z-10">
+                       <ChevronRight className="w-5 h-5 text-un-blue" />
+                     </button>
+                   </div>
+                   {/* Explorar Dashboard CTA */}
+                   <a href="#" className="flex items-center justify-between p-4 md:p-5 bg-white border-t border-gray-100 hover:bg-un-blue/5 transition-colors group">
+                     <div className="flex items-center gap-3 md:gap-4">
+                       <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-un-gold/20 flex items-center justify-center">
+                         <Target className="w-5 h-5 md:w-6 md:h-6 text-un-gold" />
+                       </div>
+                       <div>
+                         <p className="text-[10px] md:text-xs text-[#4C6B8B] font-bold uppercase tracking-widest">Acesso Público</p>
+                         <p className="text-sm md:text-base font-display font-black text-un-blue">Explorar Dashboard</p>
+                       </div>
                      </div>
-                   </div>
-                   <div className="w-8 h-8 rounded-full bg-un-blue/5 flex items-center justify-center group-hover:bg-un-blue transition-colors">
-                     <ArrowRight className="w-4 h-4 text-un-blue group-hover:text-white transition-colors" />
-                   </div>
+                     <div className="w-8 h-8 rounded-full bg-un-blue/5 flex items-center justify-center group-hover:bg-un-blue transition-colors">
+                       <ArrowRight className="w-4 h-4 text-un-blue group-hover:text-white transition-colors" />
+                     </div>
+                   </a>
                  </div>
-               </div>
+                 );
+               })()}
             </div>
           </div>
         </div>
