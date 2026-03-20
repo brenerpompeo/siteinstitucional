@@ -131,16 +131,16 @@ const ODS_COLORS = [
   '#E5243B', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21',
   '#26BDE2', '#FCC30B', '#A21942', '#FD6925', '#DD1367',
   '#FD9D24', '#BF8B2E', '#3F7E44', '#0A97D9', '#56C02B',
-  '#00689D', '#19486A'
+  '#00689D', '#19486A', '#6E417A'
 ];
 
 const ODS_NAMES = [
-  'Erradicação da Pobreza', 'Fome Zero', 'Saúde e Bem-Estar',
+  'Erradicação da Pobreza', 'Fome Zero e Agricultura Sustentável', 'Saúde e Bem-Estar',
   'Educação de Qualidade', 'Igualdade de Gênero', 'Água Potável e Saneamento',
-  'Energia Limpa', 'Trabalho Decente', 'Indústria e Inovação',
-  'Redução das Desigualdades', 'Cidades Sustentáveis', 'Consumo Responsável',
-  'Ação Climática', 'Vida na Água', 'Vida Terrestre',
-  'Paz e Justiça', 'Parcerias'
+  'Energia Limpa e Acessível', 'Trabalho Decente e Crescimento Econômico', 'Indústria, Inovação e Infraestrutura',
+  'Redução das Desigualdades', 'Cidades e Comunidades Sustentáveis', 'Consumo e Produção Responsáveis',
+  'Ação Contra a Mudança Global do Clima', 'Vida na Água', 'Vida Terrestre',
+  'Paz, Justiça e Instituições Eficazes', 'Parcerias e Meios de Implementação', 'Igualdade Étnico Racial'
 ];
 
 const HERO_SLIDES = [
@@ -1049,27 +1049,29 @@ const PillaresSection = () => {
           <div className="flex flex-col lg:flex-row gap-8 mb-10">
             <div className="lg:w-2/5">
               <span className="text-xs font-bold uppercase tracking-widest text-un-blue-1 mb-3 block">Agenda 2030</span>
-              <h3 className="text-2xl md:text-3xl font-display font-black text-gray-900 mb-4">17 Objetivos de Desenvolvimento <span className="text-un-blue">Sustentável</span></h3>
+              <h3 className="text-2xl md:text-3xl font-display font-black text-gray-900 mb-4">Objetivos de Desenvolvimento <span className="text-un-blue">Sustentável</span></h3>
               <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                A Agenda 2030, composta pelos 17 Objetivos de Desenvolvimento Sustentável (ODS), 169 metas e 231 indicadores é um esforço conjunto de países, empresas, instituições e sociedade civil.
+                A Agenda 2030, composta pelos 17 Objetivos de Desenvolvimento Sustentável (ODS) — mais o ODS 18 (Igualdade Étnico Racial, exclusivo do Brasil), 169 metas e 231 indicadores é um esforço conjunto de países, empresas, instituições e sociedade civil.
               </p>
               <p className="text-gray-500 text-sm leading-relaxed">
                 Os ODS são nosso norte para um futuro mais justo e sustentável, são integrados e indivisíveis, e mesclam, de forma equilibrada, as <strong className="text-gray-800">três dimensões do desenvolvimento sustentável: a econômica, a social e a ambiental</strong>. São universais e tem em seu cerne <strong className="text-gray-800">"não deixar ninguém para trás"</strong>.
               </p>
             </div>
             <div className="lg:w-3/5 flex items-center">
-              <div className="grid grid-cols-6 sm:grid-cols-9 lg:grid-cols-17 gap-2 w-full">
+              <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-6 gap-3 w-full">
                 {ODS_COLORS.map((color, idx) => (
-                  <div
+                  <a
                     key={idx}
-                    className="group relative aspect-square rounded-xl flex flex-col items-center justify-center text-white cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-md hover:z-10"
-                    style={{ backgroundColor: color }}
+                    href="#"
+                    className="group relative rounded-2xl overflow-hidden aspect-square cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:z-10"
                   >
-                    <span className="text-sm md:text-base font-black leading-none">{idx + 1}</span>
-                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-[9px] px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-lg">
-                      {ODS_NAMES[idx]}
-                    </div>
-                  </div>
+                    <img
+                      src={`${import.meta.env.BASE_URL}ods/ods-${idx + 1}.jpg`}
+                      alt={ODS_NAMES[idx]}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  </a>
                 ))}
               </div>
             </div>
