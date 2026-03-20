@@ -1050,8 +1050,11 @@ const PillaresSection = () => {
             <div className="lg:w-2/5">
               <span className="text-xs font-bold uppercase tracking-widest text-un-blue-1 mb-3 block">Agenda 2030</span>
               <h3 className="text-2xl md:text-3xl font-display font-black text-gray-900 mb-4">17 Objetivos de Desenvolvimento <span className="text-un-blue">Sustentável</span></h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                A Agenda 2030, composta pelos 17 Objetivos de Desenvolvimento Sustentável (ODS), 169 metas e 231 indicadores é um esforço conjunto de países, empresas, instituições e sociedade civil.
+              </p>
               <p className="text-gray-500 text-sm leading-relaxed">
-                Composta por 169 metas e 231 indicadores, é um esforço universal de países, empresas e sociedade civil. Tem em seu cerne <strong className="text-gray-800">"não deixar ninguém para trás"</strong>.
+                Os ODS são nosso norte para um futuro mais justo e sustentável, são integrados e indivisíveis, e mesclam, de forma equilibrada, as <strong className="text-gray-800">três dimensões do desenvolvimento sustentável: a econômica, a social e a ambiental</strong>. São universais e tem em seu cerne <strong className="text-gray-800">"não deixar ninguém para trás"</strong>.
               </p>
             </div>
             <div className="lg:w-3/5 flex items-center">
