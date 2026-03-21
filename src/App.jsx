@@ -1275,7 +1275,7 @@ const CopPage = () => {
         <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 relative z-10 text-center">
           <span className="inline-block px-3 py-1 text-[10px] md:text-xs font-display font-black uppercase tracking-widest mb-6 rounded-sm bg-un-gold/20 text-un-gold border border-un-gold/30">Compliance & Transparência</span>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-black text-white uppercase tracking-tighter mb-6">
-            Comunicação sobre o<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-green to-un-blue-3">Progresso (CoP)</span>
+            Comunicação de<br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-green to-un-blue-3">Progresso (CoP)</span>
           </h1>
           <h2 className="text-un-blue-3 font-bold text-xl md:text-2xl mb-4">
             O principal mecanismo de reporte do Pacto Global da ONU para empresas participantes.
@@ -1376,7 +1376,7 @@ const CopPage = () => {
             <div className="sticky top-24">
               <span className="text-un-green font-bold text-[10px] md:text-xs uppercase tracking-widest mb-2 block">Definição Oficial</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black uppercase text-un-blue leading-tight mb-6">
-                O que é a Comunicação sobre o <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-green to-un-blue">Progresso</span>?
+                O que é a Comunicação de <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-green to-un-blue">Progresso</span>?
               </h2>
               <p className="text-[#4C6B8B] text-sm md:text-base mb-6 leading-relaxed">
                 A Comunicação de Progresso (CoP) é o principal mecanismo de reporte do Pacto Global das Nações Unidas. Por meio da CoP, empresas participantes comunicam seus avanços na implementação dos Dez Princípios do Pacto Global e sua contribuição para os Objetivos de Desenvolvimento Sustentável (ODS).
