@@ -1095,11 +1095,11 @@ const PillaresSection = () => {
                     onClick={() => setOpenPillar(isActive ? -1 : idx)}
                     className={`rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center text-center transition-all duration-300 border-2 group relative overflow-hidden focus:outline-none ${isActive ? 'bg-white/10 border-white/20 shadow-lg scale-[1.02] z-10' : 'bg-white/5 border-transparent hover:bg-white/10 hover:border-white/10'}`}
                   >
-                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-[1.2rem] flex items-center justify-center mb-5 transition-transform duration-300 group-hover:-translate-y-1 ${isActive ? 'shadow-lg shadow-black/20' : ''}`} style={{ backgroundColor: `${pillar.color}` }}>
+                    <div className={`relative w-14 h-14 md:w-16 md:h-16 rounded-[1.2rem] flex items-start justify-center overflow-hidden mb-5 transition-transform duration-300 group-hover:-translate-y-1 ${isActive ? 'shadow-lg shadow-black/20' : ''}`} style={{ backgroundColor: `${pillar.color}` }}>
                       <img 
                         src={`${import.meta.env.BASE_URL}icons/${pillar.id}.png`} 
                         alt={pillar.title} 
-                        className="w-10 h-10 md:w-12 md:h-12 object-contain brightness-0 invert" 
+                        className="w-[160%] max-w-none h-auto -translate-y-[5%] brightness-0 invert" 
                       />
                     </div>
                     <p className="text-sm md:text-base font-black font-display uppercase tracking-wider text-white mb-1.5">{pillar.title}</p>
@@ -1128,11 +1128,11 @@ const PillaresSection = () => {
                           <img src={activePillar.image} alt={activePillar.title} className="w-full h-full object-cover" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                           <div className="absolute bottom-6 left-6 flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-xl flex items-center justify-center backdrop-blur-md shadow-lg" style={{ backgroundColor: activePillar.color }}>
+                            <div className="relative w-12 h-12 rounded-xl flex items-start justify-center overflow-hidden backdrop-blur-md shadow-lg" style={{ backgroundColor: activePillar.color }}>
                               <img 
                                 src={`${import.meta.env.BASE_URL}icons/${activePillar.id}.png`} 
                                 alt={activePillar.title} 
-                                className="w-8 h-8 object-contain brightness-0 invert" 
+                                className="w-[160%] max-w-none h-auto -translate-y-[5%] brightness-0 invert" 
                               />
                             </div>
                             <span className="text-white font-display font-black text-xl uppercase tracking-wider">{activePillar.title}</span>
@@ -1151,13 +1151,13 @@ const PillaresSection = () => {
                           {activePillar.principles.map(p => (
                             <div key={p.num} className="flex gap-5 items-start bg-white/5 p-5 md:p-6 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                               <span
-                                className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-display font-black shrink-0 shadow-md text-sm p-2"
+                                className="relative w-10 h-10 rounded-xl flex items-start justify-center overflow-hidden shrink-0 shadow-md"
                                 style={{ backgroundColor: activePillar.color }}
                               >
                                 <img 
                                   src={`${import.meta.env.BASE_URL}icons/${activePillar.id}.png`} 
                                   alt="" 
-                                  className="w-full h-full object-contain brightness-0 invert" 
+                                  className="w-[160%] max-w-none h-auto -translate-y-[5%] brightness-0 invert" 
                                 />
                               </span>
                               <p className="text-white/90 text-sm md:text-base leading-relaxed pt-0.5">{p.text}</p>
