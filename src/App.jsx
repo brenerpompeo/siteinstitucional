@@ -988,6 +988,53 @@ const PillaresSection = () => {
           </p>
         </div>
 
+        {/* 10 Principles Bento Box (Redesigned) */}
+        <div className="bg-un-blue rounded-[2.5rem] overflow-hidden mb-10 shadow-2xl shadow-un-blue/10">
+          <div className="flex flex-col lg:flex-row">
+            {/* Text Column */}
+            <div className="lg:w-5/12 p-10 md:p-14 flex flex-col justify-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+              <span className="text-un-gold text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 inline-block relative z-10" style={{letterSpacing: '0.2em'}}>Compromisso Obrigatório</span>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-white mb-6 leading-[1.1] tracking-tight relative z-10">10 Princípios<br/>Universais</h3>
+              <p className="text-un-blue-3 text-sm md:text-base leading-relaxed mb-8 max-w-sm font-light relative z-10">
+                Ao aderir ao Pacto Global da ONU, as empresas assumem o compromisso contínuo de seguir os Dez Princípios Universais — as diretrizes que fundamentam a sustentabilidade global em quatro pautas centrais.
+              </p>
+              <div className="hidden lg:flex items-center gap-3 text-un-blue-3 text-xs uppercase font-bold tracking-widest relative z-10">
+                <ArrowRight className="w-4 h-4" /> Selecione um pilar
+              </div>
+            </div>
+            
+            {/* 2x2 Bento Cards Column */}
+            <div className="lg:w-7/12 p-4 md:p-6 lg:p-8 bg-black/10">
+              <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full min-h-[400px]">
+                {PILLARS_DATA.map((pillar, idx) => {
+                  const IC = PILLAR_ICONS[pillar.id];
+                  const isActive = openPillar === idx;
+                  return (
+                  <button 
+                    key={pillar.id} 
+                    onClick={() => {
+                      setOpenPillar(isActive ? -1 : idx);
+                      // Opcional: smooth scroll um pouco para baixo se estiver no topo, mas por enquanto só abre o accordion
+                    }}
+                    className={`rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center text-center transition-all duration-300 border-2 group relative overflow-hidden focus:outline-none ${isActive ? 'bg-white/10 border-white/20 shadow-lg scale-[1.02] z-10' : 'bg-white/5 border-transparent hover:bg-white/10 hover:border-white/10'}`}
+                  >
+                    <div className={`w-14 h-14 md:w-16 md:h-16 rounded-[1.2rem] flex items-center justify-center mb-5 transition-transform duration-300 group-hover:-translate-y-1 ${isActive ? 'shadow-lg shadow-black/20' : ''}`} style={{ backgroundColor: `${pillar.color}` }}>
+                      <IC className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                    </div>
+                    <p className="text-sm md:text-base font-black font-display uppercase tracking-wider text-white mb-1.5">{pillar.title}</p>
+                    <p className="text-[10px] md:text-xs text-white/50 font-bold uppercase tracking-wider">{pillar.principles.length} princípio{pillar.principles.length > 1 ? 's' : ''}</p>
+                    
+                    {/* Active indicator */}
+                    <div className={`absolute bottom-0 left-0 right-0 h-1 transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} style={{ backgroundColor: `${pillar.color}` }}></div>
+                  </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Accordion */}
         <div className="mb-16 md:mb-20">
           {PILLARS_DATA.map((pillar, idx) => (
@@ -998,37 +1045,6 @@ const PillaresSection = () => {
               onClick={() => setOpenPillar(openPillar === idx ? -1 : idx)}
             />
           ))}
-        </div>
-
-        {/* 10 Principles Bento Bar */}
-        <div className="bg-un-blue rounded-3xl overflow-hidden mb-16 md:mb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-5">
-            {/* Text Column */}
-            <div className="lg:col-span-2 p-8 md:p-12 flex flex-col justify-center">
-              <span className="text-un-gold text-[10px] font-bold uppercase tracking-widest mb-3 block">Compromisso obrigatório</span>
-              <h3 className="text-2xl md:text-3xl font-display font-black text-white mb-4 leading-tight">10 Princípios<br/>Universais</h3>
-              <p className="text-white/60 text-sm leading-relaxed">
-                Ao aderir ao Pacto Global da ONU, as empresas assumem o compromisso de seguir os 10 Princípios Universais — diretrizes fundamentais em quatro áreas essenciais.
-              </p>
-            </div>
-            {/* Cards Grid Column */}
-            <div className="lg:col-span-3 p-4 md:p-6">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {PILLARS_DATA.map(pillar => {
-                  const IC = PILLAR_ICONS[pillar.id];
-                  return (
-                  <div key={pillar.id} className="bg-white/10 hover:bg-white/15 rounded-2xl p-5 flex flex-col items-center text-center backdrop-blur-sm border border-white/5 transition-all duration-300 hover:scale-105 cursor-pointer group">
-                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3 transition-colors" style={{ backgroundColor: `${pillar.color}` }}>
-                      <IC className="w-6 h-6 text-white" />
-                    </div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-white mb-1">{pillar.title}</p>
-                    <p className="text-[10px] text-white/40 font-medium">{pillar.principles.length} princípio{pillar.principles.length > 1 ? 's' : ''}</p>
-                  </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Agenda 2030 / ODS */}
