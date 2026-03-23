@@ -82,7 +82,8 @@ const PILLARS_DATA = [
     principles: [
       { num: 1, text: 'As empresas devem apoiar e respeitar a proteção de direitos humanos reconhecidos internacionalmente.' },
       { num: 2, text: 'Assegurar-se de sua não participação em violações destes direitos.' }
-    ]
+    ],
+    ods: [3, 4, 5, 10, 18]
   },
   {
     id: 'trabalho',
@@ -97,7 +98,8 @@ const PILLARS_DATA = [
       { num: 4, text: 'A eliminação de todas as formas de trabalho forçado ou compulsório.' },
       { num: 5, text: 'A abolição efetiva do trabalho infantil.' },
       { num: 6, text: 'Eliminar a discriminação no emprego.' }
-    ]
+    ],
+    ods: [8]
   },
   {
     id: 'meio-ambiente',
@@ -111,7 +113,8 @@ const PILLARS_DATA = [
       { num: 7, text: 'As empresas devem apoiar uma abordagem preventiva aos desafios ambientais.' },
       { num: 8, text: 'Desenvolver iniciativas para promover maior responsabilidade ambiental.' },
       { num: 9, text: 'Incentivar o desenvolvimento e difusão de tecnologias ambientalmente amigáveis.' }
-    ]
+    ],
+    ods: [2, 6, 12, 13, 14, 15]
   },
   {
     id: 'anticorrupcao',
@@ -123,7 +126,8 @@ const PILLARS_DATA = [
     description: 'As empresas devem combater a corrupção em todas as suas formas, inclusive extorsão e propina, promovendo uma cultura de integridade e transparência.',
     principles: [
       { num: 10, text: 'As empresas devem combater a corrupção em todas as suas formas, inclusive extorsão e propina.' }
-    ]
+    ],
+    ods: [16]
   }
 ];
 
@@ -984,7 +988,7 @@ const PillaresSection = () => {
                           <span className="w-8 h-[2px] bg-un-gold/50 rounded-full" />
                           Princípios Relacionados
                         </h4>
-                        <div className="grid gap-4">
+                        <div className="grid gap-4 mb-10">
                           {activePillar.principles.map(p => (
                             <div key={p.num} className="flex gap-5 items-start bg-white/5 p-5 md:p-6 rounded-2xl border border-white/5 hover:bg-white/10 transition-colors">
                               <span
@@ -997,6 +1001,30 @@ const PillaresSection = () => {
                             </div>
                           ))}
                         </div>
+
+                        {/* ODS Relacionados */}
+                        {activePillar.ods && activePillar.ods.length > 0 && (
+                          <div className="animate-fade-in">
+                            <h4 className="flex items-center gap-3 text-un-gold font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-6">
+                              <span className="w-8 h-[2px] bg-un-gold/50 rounded-full" />
+                              Objetivos Relacionados (ODS)
+                            </h4>
+                            <div className="flex flex-wrap gap-3 md:gap-4">
+                              {activePillar.ods.map(odsNum => (
+                                <div key={odsNum} className="group relative w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-all duration-300 ring-2 ring-transparent hover:ring-un-gold/50">
+                                  <img 
+                                    src={`${import.meta.env.BASE_URL}ods/ods-${odsNum}.jpg`} 
+                                    alt={ODS_NAMES[odsNum - 1]} 
+                                    className="w-full h-full object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                     <span className="text-white font-bold text-xs">{odsNum}</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                    </div>
                  );
@@ -1005,43 +1033,7 @@ const PillaresSection = () => {
           )}
         </div>
 
-        {/* Agenda 2030 / ODS */}
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
-          <div className="flex flex-col lg:flex-row gap-8 mb-10">
-            <div className="lg:w-2/5">
-              <span className="text-xs font-bold uppercase tracking-widest text-un-blue-1 mb-3 block">Agenda 2030</span>
-              <h3 className="text-2xl md:text-3xl font-display font-black text-gray-900 mb-4">Objetivos de Desenvolvimento <span className="text-un-blue">Sustentável</span></h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                A Agenda 2030, composta pelos 17 Objetivos de Desenvolvimento Sustentável (ODS) — mais o ODS 18 (Igualdade Étnico Racial, exclusivo do Brasil), 169 metas e 231 indicadores é um esforço conjunto de países, empresas, instituições e sociedade civil.
-              </p>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Os ODS são nosso norte para um futuro mais justo e sustentável, são integrados e indivisíveis, e mesclam, de forma equilibrada, as <strong className="text-gray-800">três dimensões do desenvolvimento sustentável: a econômica, a social e a ambiental</strong>. São universais e tem em seu cerne <strong className="text-gray-800">"não deixar ninguém para trás"</strong>.
-              </p>
-              <a href="#" className="inline-flex items-center gap-2 bg-un-blue text-white font-bold text-sm uppercase tracking-wider px-6 py-3 rounded-full hover:bg-un-blue-1 transition-colors duration-300 shadow-md hover:shadow-lg mt-6">
-                Saiba Mais <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-            <div className="lg:w-3/5 flex items-center">
-              <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-6 gap-3 w-full">
-                {ODS_COLORS.map((color, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="group relative rounded-2xl overflow-hidden aspect-square cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:z-10"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}ods/ods-${idx + 1}.jpg`}
-                      alt={ODS_NAMES[idx]}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
 
-        </div>
 
       </div>
     </section>
