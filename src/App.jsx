@@ -1567,7 +1567,6 @@ const CopPage = () => {
               </div>
               <h3 className="font-display font-black text-xl text-un-blue mb-2 uppercase tracking-tight">Painel Global</h3>
               <p className="text-[#4C6B8B] text-sm mb-4 px-2">Acessar o painel de participantes na plataforma do Pacto Global e confirmar a renovação da declaração de apoio contínuo do CEO de forma digital.</p>
-              <Button variant="primary" className="text-xs px-3 py-1.5 h-auto text-center" icon={ArrowRight}>Plataforma Digital</Button>
             </div>
 
             <div className="relative z-10 flex flex-col items-center text-center group bg-[#F6F8FB] pt-4 mt-8 lg:mt-0">
