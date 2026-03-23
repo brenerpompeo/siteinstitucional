@@ -382,13 +382,13 @@ const SectionHeader = ({
   className = "",
   inverted = false
 }) => (
-  <div className={cn("flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 md:mb-16 gap-8", className)}>
+  <div className={cn("flex flex-col lg:flex-row justify-between items-start lg:items-end mb-14 md:mb-20 lg:mb-24 gap-10", className)}>
     <div className="max-w-4xl">
-      <div className="flex items-center gap-4 mb-4">
-        <div className={cn("w-2 h-10 rounded-full", barColor)}></div>
+      <div className="flex items-center gap-5 mb-5">
+        <div className={cn("w-2 h-10 md:h-14 rounded-full", barColor)}></div>
         {badge && (
           <span className={cn(
-            "text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-sm backdrop-blur-sm border",
+            "text-[10px] md:text-xs font-bold uppercase tracking-[0.25em] px-4 py-1.5 rounded-sm backdrop-blur-sm border",
             inverted 
               ? "bg-white/10 border-white/20 text-white" 
               : "bg-un-blue/5 border-un-blue/10 text-un-blue"
@@ -398,7 +398,7 @@ const SectionHeader = ({
         )}
       </div>
       <h2 className={cn(
-        "text-3xl md:text-5xl lg:text-7xl font-display font-black uppercase tracking-tighter leading-[1.05]",
+        "text-4xl md:text-6xl lg:text-8xl font-display font-black uppercase tracking-tighter leading-[1.0] mb-0",
         inverted ? "text-white" : "text-gray-900"
       )}>
         {title} {titleAccent && <br className="hidden md:block"/>}
@@ -413,7 +413,7 @@ const SectionHeader = ({
       </h2>
       {description && (
         <p className={cn(
-          "mt-6 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed font-light",
+          "mt-8 text-sm md:text-base lg:text-xl max-w-2xl leading-relaxed font-light",
           inverted ? "text-un-blue-3" : "text-gray-600"
         )}>
           {description}
@@ -421,7 +421,7 @@ const SectionHeader = ({
       )}
     </div>
     {button && (
-      <div className="shrink-0 flex items-center">
+      <div className="shrink-0 flex items-center lg:pb-2">
         {button}
       </div>
     )}
@@ -477,7 +477,7 @@ const SuperMenu = ({ isOpen, onClose, onRouteChange }) => {
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: #CCB146; border-radius: 20px; }
       `}</style>
 
-      <div className="flex justify-between items-center p-4 md:p-8 border-b border-white/10 shrink-0">
+      <div className="flex justify-between items-center px-4 md:px-8 lg:px-12 py-4 md:py-8 border-b border-white/10 shrink-0">
         <div className="flex items-center gap-3 md:gap-4">
           <button onClick={() => handleNav('home')} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-8 md:h-10 w-auto" />
@@ -493,7 +493,7 @@ const SuperMenu = ({ isOpen, onClose, onRouteChange }) => {
       </div>
 
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 py-8 md:py-12">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-12">
 
           <div className="max-w-2xl mb-8 md:mb-12">
             <div className="relative group">
@@ -589,7 +589,7 @@ const CapsuleHeader = ({ onRouteChange, currentRoute }) => {
         "fixed w-full z-50 transition-all duration-500",
         scrolled ? "bg-un-blue py-3 shadow-[0_10px_30px_rgba(0,0,0,0.3)]" : "bg-transparent py-5"
       )}>
-        <div className="container mx-auto px-4 md:px-8 xl:px-12 flex items-center justify-between">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 flex items-center justify-between">
           
           {/* Logo e Menu Esquerda */}
           <div className="flex items-center gap-4 md:gap-6 w-1/4 xl:w-1/4">
@@ -706,22 +706,24 @@ const HeroCarousel = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-un-blue via-black/40 to-transparent opacity-95"></div>
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
 
-          <div className="absolute bottom-16 md:bottom-24 left-4 md:left-12 lg:left-24 z-20 w-full max-w-4xl pr-4">
-            <div className={cn("transition-all duration-1000 delay-300 transform", index === current ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0")}>
-              <Badge color="bg-un-red text-white shadow-lg mb-4 md:mb-6">{slide.badge}</Badge>
+          <div className="absolute inset-x-0 bottom-16 md:bottom-24 z-20">
+            <div className="container mx-auto px-4 md:px-8 lg:px-12">
+              <div className={cn("max-w-4xl transition-all duration-1000 delay-300 transform", index === current ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0")}>
+                <Badge color="bg-un-red text-white shadow-lg mb-4 md:mb-6">{slide.badge}</Badge>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black text-white uppercase tracking-tighter leading-[0.9] drop-shadow-2xl mb-4 md:mb-6">
-                {slide.title}<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-gold to-white">{slide.subtitle}</span>
-              </h1>
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-black text-white uppercase leading-[0.9] drop-shadow-2xl mb-4 md:mb-6">
+                  {slide.title}<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-un-gold to-white">{slide.subtitle}</span>
+                </h1>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 mt-8">
-                <Button variant="primary" icon={ArrowRight} className="bg-un-red hover:bg-white hover:text-un-red shadow-un-red/20 text-xs md:text-sm px-6 py-3 md:px-8 md:py-4">
-                  {slide.ctaPrimary}
-                </Button>
-                <div className="flex items-center text-un-blue-3 text-xs md:text-sm font-medium hover:text-white transition-colors cursor-pointer">
-                  <Play className="w-4 h-4 mr-2" />
-                  {slide.ctaSecondary} <span className="mx-2 opacity-50">•</span> 3 min
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 mt-8">
+                  <Button variant="primary" icon={ArrowRight} className="bg-un-red hover:bg-white hover:text-un-red shadow-un-red/20 text-xs md:text-sm px-6 py-3 md:px-8 md:py-4">
+                    {slide.ctaPrimary}
+                  </Button>
+                  <div className="flex items-center text-un-blue-3 text-xs md:text-sm font-medium hover:text-white transition-colors cursor-pointer">
+                    <Play className="w-4 h-4 mr-2" />
+                    {slide.ctaSecondary} <span className="mx-2 opacity-50">•</span> 3 min
+                  </div>
                 </div>
               </div>
             </div>
@@ -730,18 +732,20 @@ const HeroCarousel = () => {
       ))}
 
       {/* Slider Progress Indicator (Red Bull Horizontal Dots) */}
-      <div className="absolute bottom-6 left-4 md:left-12 lg:left-24 flex items-center gap-2 z-30">
-        {HERO_SLIDES.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrent(idx)}
-            className={cn(
-              "h-1 md:h-1.5 rounded-full transition-all duration-500 ease-out",
-              current === idx ? "w-12 md:w-16 bg-un-gold" : "w-2 md:w-3 bg-white/40 hover:bg-white"
-            )}
-            aria-label={`Ir para slide ${idx + 1}`}
-          />
-        ))}
+      <div className="absolute bottom-6 inset-x-0 z-30">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 flex items-center gap-2">
+          {HERO_SLIDES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={cn(
+                "h-1 md:h-1.5 rounded-full transition-all duration-500 ease-out",
+                current === idx ? "w-12 md:w-16 bg-un-gold" : "w-2 md:w-3 bg-white/40 hover:bg-white"
+              )}
+              aria-label={`Ir para slide ${idx + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -771,7 +775,7 @@ const ImpactSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-un-blue via-transparent to-un-blue"></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10">
         <SectionHeader 
           inverted
           barColor="bg-un-green"
@@ -856,7 +860,7 @@ const Tile = ({ size = "small", image, category, title, subtitle, color = "bg-un
 
 const Footer = () => (
   <footer className="bg-[#0f2942] text-white pt-16 md:pt-20 lg:pt-24 border-t border-white/5">
-    <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 pb-16 md:pb-24">
+    <div className="container mx-auto px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 pb-16 md:pb-24">
       {/* Coluna 1: Logo, Texto e Redes */}
       <div className="flex flex-col space-y-6">
         <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-20 md:h-24 w-auto object-contain object-left" style={{filter: 'brightness(0) invert(1)'}} />
@@ -930,7 +934,7 @@ const Footer = () => (
 
     {/* Bottom Copyright Bar */}
     <div className="w-full bg-[#1a5276] py-5">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-0 text-[11px] text-white/70 font-medium tracking-wide">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-0 text-[11px] text-white/70 font-medium tracking-wide">
         <span>© 2026 Todos os direitos reservados</span>
         <span className="hidden sm:inline mx-4 text-white/25">|</span>
         <span>Pacto Global - Rede Brasil</span>
@@ -994,7 +998,7 @@ const EventsListSection = () => {
   const [activeTab, setActiveTab] = React.useState('upcoming');
   return (
   <section className="py-12 md:py-16 bg-[#F8F9FB]">
-    <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+    <div className="container mx-auto px-4 md:px-8 lg:px-12">
       <SectionHeader 
         barColor="bg-un-gold"
         badge="Agenda 2026"
@@ -1053,7 +1057,7 @@ const PillaresSection = () => {
 
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-[#F4F6F9] to-[#ECEEF2]">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12">
 
         <SectionHeader 
           barColor="bg-un-blue"
@@ -1233,7 +1237,7 @@ const NEWS_DATA = [
 const NewsSection = ({ navigate }) => {
   return (
     <section className="py-16 md:py-24 bg-[#FAFBFC]">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-2xl">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12">
         <SectionHeader 
           barColor="bg-un-blue"
           badge="Inovação e Tendências"
@@ -1325,7 +1329,7 @@ const HomeContent = ({ navigate }) => (
 
     {/* BENTO GRID SECTION */}
     <section className="py-12 md:py-20 bg-[#F6F8FB]">
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12">
         <SectionHeader 
           barColor="bg-un-green"
           badge="Destaques"
@@ -1386,9 +1390,9 @@ const HomeContent = ({ navigate }) => (
     </section>
 
     {/* CTA Section */}
-    <section className="py-16 md:py-24 lg:py-32 bg-un-blue relative overflow-hidden">
+    <section className="py-24 md:py-32 lg:py-40 bg-un-blue relative overflow-hidden">
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 text-center relative z-10">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 text-center relative z-10">
         <h2 className="text-3xl md:text-4xl lg:text-8xl font-display font-black uppercase mb-4 md:mb-8 tracking-tighter text-white">É hora de agir.</h2>
         <p className="text-sm md:text-lg lg:text-xl font-medium mb-8 md:mb-10 max-w-2xl mx-auto text-un-blue-3">
           Sua empresa pode ser parte da solução. Junte-se à maior rede de sustentabilidade do mundo.
