@@ -1171,15 +1171,24 @@ const NEWS_DATA = [
   }
 ];
 
-const NewsSection = () => {
+const NewsSection = ({ navigate }) => {
   return (
     <section className="py-16 md:py-24 bg-[#FAFBFC]">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-screen-2xl">
         {/* Header */}
         <div className="flex justify-between items-end mb-10 md:mb-14">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-gray-900 tracking-tight">
-            Histórias
+            Notícias
           </h2>
+          {navigate && (
+            <Button 
+              variant="outline" 
+              className="rounded-full text-[10px] md:text-xs uppercase tracking-widest font-black px-6 py-2 border-un-blue/20 text-un-blue hover:bg-un-blue hover:text-white transition-all shadow-sm"
+              onClick={() => navigate('noticias')}
+            >
+              Ver Todas
+            </Button>
+          )}
         </div>
 
         {/* Horizontal scroll container (Carousel) */}
@@ -1225,13 +1234,13 @@ const NewsSection = () => {
   );
 };
 
-const HomeContent = () => (
+const HomeContent = ({ navigate }) => (
   <div className="animate-fade-in">
     <HeroCarousel />
     <ImpactSection />
     <EventsListSection />
     <PillaresSection />
-    <NewsSection />
+    <NewsSection navigate={navigate} />
 
     {/* BENTO GRID SECTION */}
     <section className="py-12 md:py-20 bg-[#F6F8FB]">
@@ -1449,7 +1458,7 @@ const EventosPage = () => (
   </div>
 );
 
-const NoticiasPage = () => (
+const NoticiasPage = ({ navigate }) => (
   <div className="animate-fade-in">
     <PageHero 
       category="Comunicação"
@@ -1458,7 +1467,7 @@ const NoticiasPage = () => (
       image="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop"
       color="bg-[#0f2942]"
     />
-    <NewsSection />
+    <NewsSection navigate={navigate} />
   </div>
 );
 
@@ -2183,10 +2192,10 @@ const App = () => {
       <CapsuleHeader onRouteChange={navigate} currentRoute={currentRoute} />
 
       <main className="flex-1">
-        {currentRoute === 'home' && <HomeContent />}
+        {currentRoute === 'home' && <HomeContent navigate={navigate} />}
         {currentRoute === 'sobre' && <SobrePage />}
         {currentRoute === 'eventos' && <EventosPage />}
-        {currentRoute === 'noticias' && <NoticiasPage />}
+        {currentRoute === 'noticias' && <NoticiasPage navigate={navigate} />}
         {currentRoute === 'agenda' && <NossaAgendaPage />}
         {currentRoute === 'programas' && <ProgramasPage />}
         {currentRoute === 'conhecimento' && <ConhecimentoPage />}
