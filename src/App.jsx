@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Search, ArrowRight, Globe, ChevronDown, X, Play, BarChart3, Users, User, LogIn, FileText, BookOpen, Target, Briefcase, Building2, Calendar, ChevronLeft, ChevronRight, MapPin, Landmark, TrendingUp, ShieldCheck, Award, FileDown, UploadCloud, Edit3, MessageCircle, AlertTriangle } from 'lucide-react';
+import { Menu, Search, ArrowRight, Globe, ChevronDown, X, Play, BarChart3, Users, User, LogIn, FileText, BookOpen, Target, Briefcase, Building2, Calendar, ChevronLeft, ChevronRight, MapPin, Landmark, TrendingUp, ShieldCheck, Award, FileDown, UploadCloud, Edit3, MessageCircle, AlertTriangle, Megaphone, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 /**
  * ARTEFATO FINAL: UN GLOBAL COMPACT DESIGN SYSTEM (v13)
@@ -746,53 +746,82 @@ const Tile = ({ size = "small", image, category, title, subtitle, color = "bg-un
 // --- COMPONENTE: FOOTER ---
 
 const Footer = () => (
-  <footer className="bg-un-blue text-white pt-12 md:pt-16 lg:pt-24 pb-8 md:pb-12 border-t border-white/10">
-    <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-12 md:mb-20">
-      <div className="lg:col-span-2 space-y-6">
-        <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-10 md:h-12 w-auto" />
-        <p className="text-un-blue-3 max-w-sm leading-relaxed text-xs md:text-sm">
-          Como uma iniciativa especial do Secretário-Geral da ONU, o Pacto Global das Nações Unidas é um chamado para que as empresas alinhem suas estratégias e operações com Dez Princípios universais.
+  <footer className="bg-[#0f2942] text-white pt-16 md:pt-20 lg:pt-24 pb-8 md:pb-10 border-t border-white/5">
+    <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-16 md:mb-24">
+      {/* Coluna 1: Logo, Texto e Redes */}
+      <div className="flex flex-col space-y-8">
+        <img src={`${import.meta.env.BASE_URL}logo-pacto-white.png`} alt="Pacto Global - Rede Brasil" className="h-20 md:h-24 w-auto object-contain object-left mix-blend-screen" style={{filter: 'brightness(0) invert(1)'}} />
+        <p className="text-white/70 max-w-[280px] leading-relaxed text-xs md:text-sm font-light">
+          Nos ajude a transformar o mundo por meio dos negócios.
         </p>
-        <div className="flex gap-4 pt-4">
-          {['In', 'Ig', 'Yt', 'Fb'].map(s => (
-            <div key={s} className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-un-gold hover:text-un-blue hover:border-un-gold transition-all cursor-pointer font-bold text-[10px] md:text-xs">{s}</div>
-          ))}
+        <div>
+          <h4 className="font-bold text-white/90 text-sm md:text-base mb-4 inline-block border-b-2 border-[#166088] pb-1 pr-6">Nas Redes</h4>
+          <div className="flex gap-4 pt-2">
+            {[
+               { icon: Linkedin, name: 'Linkedin' },
+               { icon: Instagram, name: 'Instagram' },
+               { icon: Youtube, name: 'Youtube' },
+               { icon: () => <span className="text-sm font-bold">X</span>, name: 'X' }
+            ].map((social, idx) => {
+              const Icon = social.icon;
+              return (
+                <div key={idx} className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-[#5d8db5] flex items-center justify-center hover:bg-white hover:text-[#0f2942] transition-colors cursor-pointer text-white shadow-md">
+                  <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
+      {/* Coluna 2: Links Úteis */}
       <div>
-        <h4 className="font-bold text-un-gold uppercase tracking-widest mb-4 md:mb-6 text-[10px] md:text-xs">Organização</h4>
-        <ul className="space-y-3 md:space-y-4 text-xs md:text-sm font-medium text-un-blue-3">
+        <h4 className="font-bold text-white/90 text-sm md:text-base mb-6 inline-block border-b-2 border-[#166088] pb-1 pr-6">Links Úteis</h4>
+        <ul className="space-y-4 md:space-y-5 text-xs md:text-sm font-light text-white/80">
           <li><a href="#" className="hover:text-white transition-colors">Sobre Nós</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Nossa Equipe</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Conselho</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Carreiras</a></li>
+          <li><a href="#" className="hover:text-white transition-colors">Dez Princípios</a></li>
+          <li><a href="#" className="hover:text-white transition-colors leading-relaxed inline-block">Objetivos de <br/>Desenvolvimento <br/>Sustentável</a></li>
+          <li><a href="#" className="hover:text-white transition-colors">Saiba quem já faz parte</a></li>
+          <li><a href="#" className="hover:text-white transition-colors">Como aderir</a></li>
+          <li><a href="#" className="hover:text-white transition-colors">Comunicação de Progresso</a></li>
         </ul>
       </div>
 
+      {/* Coluna 3: Oportunidades & Políticas */}
       <div>
-        <h4 className="font-bold text-un-gold uppercase tracking-widest mb-4 md:mb-6 text-[10px] md:text-xs">Temas</h4>
-        <ul className="space-y-3 md:space-y-4 text-xs md:text-sm font-medium text-un-blue-3">
-          <li><a href="#" className="hover:text-white transition-colors">Direitos Humanos</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Trabalho</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Meio Ambiente</a></li>
-          <li><a href="#" className="hover:text-white transition-colors">Anticorrupção</a></li>
-        </ul>
+        <div className="mb-10">
+          <h4 className="font-bold text-white/90 text-sm md:text-base mb-6 inline-block border-b-2 border-[#166088] pb-1 pr-6">Oportunidades</h4>
+          <ul className="space-y-4 text-xs md:text-sm font-light text-white/80">
+            <li><a href="#" className="hover:text-white transition-colors">Trabalhe conosco</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 className="font-bold text-white/90 text-sm md:text-base mb-6 inline-block border-b-2 border-[#166088] pb-1 pr-6">Políticas</h4>
+          <ul className="space-y-5 text-xs md:text-[13px] font-light text-white/80">
+            <li><a href="#" className="hover:text-white transition-colors">Política de Cookies</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade | Landing Pages e E-mails</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade | Chatbot</a></li>
+          </ul>
+        </div>
       </div>
 
+      {/* Coluna 4: Sala de Imprensa */}
       <div>
-        <h4 className="font-bold text-un-gold uppercase tracking-widest mb-4 md:mb-6 text-[10px] md:text-xs">Contato</h4>
-        <p className="text-un-blue-3 text-xs md:text-sm mb-4">secretaria@pactoglobal.org.br</p>
-        <Button variant="outline" className="w-full text-xs">Imprensa</Button>
+        <h4 className="font-bold text-white/90 text-sm md:text-base mb-6 inline-block border-b-2 border-[#166088] pb-1 pr-6">Sala de Imprensa</h4>
+        <Button variant="outline" className="bg-white text-[#0f2942] border-transparent hover:bg-gray-100 flex items-center justify-center gap-2 rounded-full px-8 py-3 w-40 font-bold uppercase tracking-wider shadow-lg text-xs mt-4">
+          <Megaphone className="w-4 h-4 text-[#0f2942]" />
+          ACESSE
+        </Button>
       </div>
     </div>
 
-    <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs text-[#4C6B8B] font-medium uppercase tracking-wide gap-4 md:gap-0">
-      <p className="text-center md:text-left">© 2026 UN Global Compact Network Brazil. All rights reserved.</p>
-      <div className="flex gap-4 md:gap-6">
-        <a href="#" className="hover:text-white">Termos de Uso</a>
-        <a href="#" className="hover:text-white">Privacidade</a>
-        <a href="#" className="hover:text-white">Cookies</a>
+    {/* Bottom Copyright Bar */}
+    <div className="w-full bg-[#5d8db5] border-t border-white/10 mt-12 py-6">
+      <div className="container mx-auto max-w-7xl px-4 md:px-8 lg:px-12 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-6 text-[10px] md:text-xs text-white/90 font-medium tracking-wide">
+        <span>© 2026 Todos os direitos reservados</span>
+        <span className="hidden sm:inline text-white/40">|</span>
+        <span>Pacto Global - Rede Brasil</span>
       </div>
     </div>
   </footer>
