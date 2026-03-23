@@ -16,6 +16,45 @@ import { Menu, Search, ArrowRight, Globe, ChevronDown, X, Play, BarChart3, Users
 // --- UTILS ---
 const cn = (...classes) => classes.filter(Boolean).join(' ');
 
+// --- ROUTING ---
+
+const ROUTES = {
+  home: '#/',
+  cop:  '#/cop',
+};
+
+const HASH_TO_ROUTE = Object.fromEntries(
+  Object.entries(ROUTES).map(([key, hash]) => [hash, key])
+);
+
+const useHashRoute = (defaultRoute = 'home') => {
+  const getRouteFromHash = () => {
+    const hash = window.location.hash || '#/';
+    return HASH_TO_ROUTE[hash] || defaultRoute;
+  };
+
+  const [currentRoute, setCurrentRoute] = useState(getRouteFromHash);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      setCurrentRoute(getRouteFromHash());
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  const navigate = (routeKey) => {
+    const hash = ROUTES[routeKey];
+    if (hash) {
+      window.location.hash = hash;
+    } else {
+      window.location.hash = '#/';
+    }
+  };
+
+  return { currentRoute, navigate };
+};
+
 // --- DADOS E MOCKS ---
 
 
@@ -1949,7 +1988,7 @@ const CopPage = () => {
 };
 
 const App = () => {
-  const [currentRoute, setCurrentRoute] = useState('home');
+  const { currentRoute, navigate } = useHashRoute('home');
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1957,7 +1996,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-un-gold selection:text-un-blue flex flex-col">
-      <CapsuleHeader onRouteChange={setCurrentRoute} currentRoute={currentRoute} />
+      <CapsuleHeader onRouteChange={navigate} currentRoute={currentRoute} />
 
       <main className="flex-1">
         {currentRoute === 'home' && <HomeContent />}
