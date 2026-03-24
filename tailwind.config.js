@@ -15,7 +15,10 @@ export default {
         'un-green': '#297D6D',
         'un-gold': '#CCB146',
         'un-red': '#EC3740',
-        'un-gray': '#F8F9FA'
+        'un-gray': '#F8F9FA',
+        'un-surface': '#F6F8FB',
+        'un-footer': '#0f2942',
+        'un-footer-accent': '#1a5276'
       },
       fontFamily: {
         sans: ['Roboto', 'system-ui', 'sans-serif'],
