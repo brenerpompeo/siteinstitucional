@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { ChevronDown, Calendar, ArrowRight, BarChart3, Target, ShieldCheck, Users, TrendingUp, FileText, BookOpen, Building2, Search, AlertTriangle, MessageCircle, FileDown, UploadCloud, Edit3, Globe, ChevronLeft } from 'lucide-react';
+import { ChevronDown, Calendar, ArrowRight, BarChart3, Target, ShieldCheck, Users, TrendingUp, FileText, BookOpen, Building2, Search, AlertTriangle, MessageCircle, FileDown, UploadCloud, Edit3, Globe, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { Button } from '../components/ui/Button';
+import { Tile } from '../components/ui/Tile';
 
 // --- COMPONENTE: PÁGINA CoP (COMMUNICATION ON PROGRESS) ---
 
