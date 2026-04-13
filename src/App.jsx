@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 /**
- * ARTEFATO FINAL: UN GLOBAL COMPACT DESIGN SYSTEM (v13)
+ * ARTEFATO FINAL: UN GLOBAL COMPACT DESIGN SYSTEM (v14)
  * ---------------------------------------------------------
  * Componentes Inclusos:
  * 1. Super Menu (Overlay Fullscreen + Busca + Mobile Nav)
@@ -19,7 +19,6 @@ import { HomeContent } from './pages/HomeContent';
 import { SobrePage } from './pages/SobrePage';
 import { EventosPage } from './pages/EventosPage';
 import { NoticiasPage } from './pages/NoticiasPage';
-import { NossaAgendaPage } from './pages/NossaAgendaPage';
 import { ProgramasPage } from './pages/ProgramasPage';
 import { ConhecimentoPage } from './pages/ConhecimentoPage';
 import { ParticiparPage } from './pages/ParticiparPage';
@@ -47,7 +46,6 @@ const App = () => {
         {currentRoute === 'sobre' && <SobrePage />}
         {currentRoute === 'eventos' && <EventosPage />}
         {currentRoute === 'noticias' && <NoticiasPage />}
-        {currentRoute === 'agenda' && <NossaAgendaPage />}
         {currentRoute === 'programas' && <ProgramasPage />}
         {currentRoute === 'conhecimento' && <ConhecimentoPage />}
         {currentRoute === 'participar' && <ParticiparPage />}
