@@ -9,7 +9,6 @@ export const ROUTES = {
   sobre: '#/sobre',
   eventos: '#/eventos',
   noticias: '#/noticias',
-  agenda: '#/agenda',
   programas: '#/programas',
   conhecimento: '#/conhecimento',
   participar: '#/participar',
@@ -361,9 +360,9 @@ export const IMPACT_TEAM = {
   verticals: [
     { area: 'Água, Oceano e Resíduos', lead: 'Gabriela Otero' },
     { area: 'Clima', lead: 'Danielly Mello Freire' },
-    { area: 'Diversidade, Equidade e Inclusão', lead: 'Verônica Vassalo' },
-    { area: 'Saúde e Trabalho', lead: 'Flávia Vianna' },
-    { area: 'Agricultura e Florestas', lead: 'Hugo Ricardo' }
+    { area: 'Agricultura e Florestas', lead: 'Hugo Ricardo' },
+    { area: 'Direitos Humanos e Trabalho', lead: 'Gabriela Almeida' },
+    { area: 'Anticorrupção', lead: 'Chantal Castro' }
   ]
 };
 
