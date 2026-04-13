@@ -1,7 +1,7 @@
 import { 
   Globe, Calendar, FileText, Target, Briefcase, BookOpen, Users, Building2, 
   ShieldCheck, LogIn, Landmark, MapPin, Droplets, Cloud, Trees, RefreshCw, 
-  Heart, Coins, Search, Zap, CheckCircle2, ArrowUpRight
+  Heart, Coins, Search, Zap, CheckCircle2, ArrowUpRight, Megaphone
 } from 'lucide-react';
 
 export const ROUTES = {
@@ -331,19 +331,53 @@ export const INSTITUTIONAL_STATS = {
 };
 
 export const IMPACT_STATS = [
-  { id: 1, value: "22.485", label: "Empresas", sub: "Comprometidas", icon: Building2, color: "text-un-gold" },
-  { id: 2, value: "167", label: "Países", sub: "Alcance Global", icon: Globe, color: "text-un-green" },
-  { id: 3, value: "3.024", label: "Não Empresariais", sub: "Organizações", icon: Landmark, color: "text-un-blue-3" },
-  { id: 4, value: "62", label: "Redes Locais", sub: "Atuação Regional", icon: MapPin, color: "text-un-gold" },
-  { id: 5, value: "25.509", label: "Participantes", sub: "Total da Rede", icon: Users, color: "text-white" },
+  { id: 1, value: \"22.485\", label: \"Empresas\", sub: \"Comprometidas\", icon: Building2, color: \"text-un-gold\" },
+  { id: 2, value: \"167\", label: \"Países\", sub: \"Alcance Global\", icon: Globe, color: \"text-un-green\" },
+  { id: 3, value: \"3.024\", label: \"Não Empresariais\", sub: \"Organizações\", icon: Landmark, color: \"text-un-blue-3\" },
+  { id: 4, value: \"62\", label: \"Redes Locais\", sub: \"Atuação Regional\", icon: MapPin, color: \"text-un-gold\" },
+  { id: 5, value: \"25.509\", label: \"Participantes\", sub: \"Total da Rede\", icon: Users, color: \"text-white\" },
 ];
 
 export const AMBICAO_STATS = {
-  organizacoes: 379,
-  cartas: 710,
+  organizacoes: 393,
+  cartas: 753,
   compromissos: '1.600+',
   trabalhadores: '1,6M+',
-  anoLancamento: 2022
+  anoLancamento: 2022,
+  embaixadoras: 13,
+  projetosAtivos: '60+',
+  crescimentoPlataformas: '8%'
+};
+
+export const IMPACT_TEAM = {
+  diretoria: { name: 'Mônica Gregori', role: 'Diretora de Impacto' },
+  lideranca: [
+    { name: 'Chantal Castro', role: 'Gerente Executiva Anticorrupção' },
+    { name: 'Gabriela Almeida', role: 'Gerente Executiva Direitos Humanos e Trabalho' },
+    { name: 'Rubens Filho', role: 'Gerente Executivo Meio Ambiente' },
+    { name: 'Gabriela Rozman', role: 'Gerente Sênior Educação e Inclusão Produtiva' }
+  ],
+  verticals: [
+    { area: 'Água, Oceano e Resíduos', lead: 'Gabriela Otero' },
+    { area: 'Clima', lead: 'Danielly Mello Freire' },
+    { area: 'Diversidade, Equidade e Inclusão', lead: 'Verônica Vassalo' },
+    { area: 'Saúde e Trabalho', lead: 'Flávia Vianna' },
+    { area: 'Agricultura e Florestas', lead: 'Hugo Ricardo' }
+  ]
+};
+
+export const JORNADA_MEMBRO = [
+  { id: 1, title: 'Onboarding', desc: 'Integração de novos membros à rede.' },
+  { id: 2, title: 'Programa Mínimo', desc: 'Engajamento essencial e relacionamento.' },
+  { id: 3, title: 'CoP / CoE', desc: 'Comunicação de Progresso e Engajamento.' },
+  { id: 4, title: 'Gestão de Conhecimento', desc: 'Acesso a Academy, SPARK e publicações.' }
+];
+
+export const ODS_18_CONTEXT = {
+  title: 'Igualdade Étnico-Racial',
+  proposal: 'Brasil',
+  focus: ['Povos Indígenas', 'Povos Afrodescendentes'],
+  goal: 'Eliminar o racismo e a discriminação em todas as suas formas.'
 };
 
 export const AMBICAO_MOVIMENTOS = [
@@ -509,6 +543,6 @@ export const PLATAFORMAS_LIST = [
     id: 6,
     title: 'Comunicar e Engajar',
     desc: 'Estratégias de mobilização e disseminação dos 10 Princípios.',
-    icon: Megaphone // Need to add this to imports if available
+    icon: Megaphone
   }
 ];
