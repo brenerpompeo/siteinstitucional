@@ -17,8 +17,8 @@ export const HomeContent = ({ navigate }) => (
     <PillaresSection />
     <NewsSection navigate={navigate} />
 
-    {/* BENTO GRID SECTION */}
-    <section className="py-12 md:py-20 bg-un-surface">
+    {/* BENTO GRID SECTION: ACELERANDO O IMPACTO REGIONAL */}
+    <section className="py-12 md:py-20 lg:py-32 bg-un-surface overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-12">
         <SectionHeader 
           barColor="bg-un-green"
@@ -33,12 +33,12 @@ export const HomeContent = ({ navigate }) => (
           }
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 auto-rows-[250px] md:auto-rows-[300px]">
           <Tile
             size="large"
             image="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=1974&auto=format&fit=crop"
             category="Meio Ambiente"
-            color="bg-un-green"
+            color="bg-un-green" // ODS 13/14/15
             title="Movimento +Água"
             subtitle="Uma coalizão para garantir a segurança hídrica no Brasil, impactando milhões de vidas."
           />
@@ -46,20 +46,21 @@ export const HomeContent = ({ navigate }) => (
             size="small"
             image="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2070&auto=format&fit=crop"
             category="Direitos Humanos"
-            color="bg-[#6E417A]"
+            color="bg-un-blue-3"
             title="Elas Lideram 2030"
           />
           <Tile
             size="small"
             image="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2032&auto=format&fit=crop"
             category="Anticorrupção"
-            color="bg-[#EC3740]"
+            color="bg-[#6E417A]" // Usando o padrão definido em constants.js
             title="Integridade Já"
           />
           <Tile
             size="wide"
             image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
             category="Liderança"
+            color="bg-un-gold"
             title="Fórum de CEOs 2026"
             subtitle="Grandes líderes debatendo o futuro da economia verde no Brasil."
           />
@@ -67,12 +68,14 @@ export const HomeContent = ({ navigate }) => (
             size="small"
             image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
             category="Global Goals"
+            color="bg-un-gold"
             title="Agenda 2030"
           />
           <Tile
             size="small"
             image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
             category="Educação"
+            color="bg-[#C5192D]" // ODS 4
             title="Academy"
           />
         </div>
@@ -80,18 +83,18 @@ export const HomeContent = ({ navigate }) => (
     </section>
 
     {/* CTA Section */}
-    <section className="py-24 md:py-32 lg:py-40 bg-un-blue relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+    <section className="py-24 md:py-32 lg:py-48 bg-un-blue relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
       <div className="container mx-auto px-4 md:px-8 lg:px-12 text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-6xl font-display font-black uppercase mb-4 md:mb-8 tracking-tighter text-white">É hora de agir.</h2>
-        <p className="text-sm md:text-lg lg:text-xl font-medium mb-8 md:mb-10 max-w-2xl mx-auto text-un-blue-3">
-          Sua empresa pode ser parte da solução. Junte-se à maior rede de sustentabilidade do mundo.
+        <h2 className="text-3xl md:text-5xl lg:text-7xl font-display font-black uppercase mb-4 md:mb-8 tracking-tighter text-white">É hora de agir.</h2>
+        <p className="text-sm md:text-lg lg:text-xl font-medium mb-8 md:mb-12 max-w-2xl mx-auto text-un-blue-3 leading-relaxed">
+          Sua empresa pode ser parte da solução. Junte-se à maior rede de sustentabilidade corporativa do mundo e acelere sua transformação.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
-          <Button variant="primary" className="px-10 py-4 md:px-12 md:py-5 text-sm md:text-base shadow-[0_0_40px_-10px_#297D6D] w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 w-full sm:w-auto">
+          <Button variant="primary" className="px-10 py-4 md:px-16 md:py-6 text-sm md:text-base shadow-[0_0_40px_-10px_#CCB146] w-full sm:w-auto uppercase tracking-widest font-bold">
             Quero Aderir
           </Button>
-          <Button variant="outline" className="px-10 py-4 md:px-12 md:py-5 text-sm md:text-base border-white/20 text-white hover:bg-white hover:text-un-blue w-full sm:w-auto">
+          <Button variant="outline" className="px-10 py-4 md:px-16 md:py-6 text-sm md:text-base border-white/20 text-white hover:bg-white hover:text-un-blue w-full sm:w-auto uppercase tracking-widest font-bold">
             Conheça os Benefícios
           </Button>
         </div>
