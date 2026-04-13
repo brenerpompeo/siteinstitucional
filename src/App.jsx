@@ -29,6 +29,7 @@ import { CopPage } from './pages/CopPage';
 import { AmbicaoPage } from './pages/ambicao/AmbicaoPage';
 import { MovimentosPage } from './pages/ambicao/MovimentosPage';
 import { PlataformasPage } from './pages/ambicao/PlataformasPage';
+import { NossaAtuacaoPage } from './pages/atuacao/NossaAtuacaoPage';
 
 const App = () => {
   const { currentRoute, navigate } = useHashRoute('home');
@@ -38,10 +39,10 @@ const App = () => {
   }, [currentRoute]);
 
   return (
-    <div className=\"min-h-screen bg-white font-sans selection:bg-un-gold selection:text-un-blue flex flex-col\">
+    <div className="min-h-screen bg-white font-sans selection:bg-un-gold selection:text-un-blue flex flex-col">
       <CapsuleHeader onRouteChange={navigate} currentRoute={currentRoute} />
 
-      <main className=\"flex-1\">
+      <main className="flex-1">
         {currentRoute === 'home' && <HomeContent navigate={navigate} />}
         {currentRoute === 'sobre' && <SobrePage />}
         {currentRoute === 'eventos' && <EventosPage />}
@@ -51,6 +52,9 @@ const App = () => {
         {currentRoute === 'conhecimento' && <ConhecimentoPage />}
         {currentRoute === 'participar' && <ParticiparPage />}
         {currentRoute === 'cop' && <CopPage />}
+        
+        {/* Atuação routes */}
+        {currentRoute === 'atuacao' && <NossaAtuacaoPage navigate={navigate} />}
 
         {/* Ambição 2030 Routes */}
         {currentRoute === 'ambicao' && <AmbicaoPage navigate={navigate} />}
