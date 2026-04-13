@@ -1,9 +1,11 @@
 import React from 'react';
-import { ArrowLeft, CheckCircle2, Info, Users, Settings, Building2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Info, Users, Settings, Building2, LayoutGrid, Rocket, RefreshCw, BookOpen } from 'lucide-react';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { Button } from '../../components/ui/Button';
-import { PLATAFORMAS_LIST } from '../../data/constants';
+import { PLATAFORMAS_LIST, JORNADA_MEMBRO } from '../../data/constants';
+
+const JORNADA_ICONS = [Rocket, Users, RefreshCw, BookOpen];
 
 export const PlataformasPage = ({ navigate }) => (
   <div className="animate-fade-in bg-un-surface min-h-screen pb-20">
@@ -14,6 +16,7 @@ export const PlataformasPage = ({ navigate }) => (
       image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
     />
 
+    {/* Section: Plataformas List */}
     <section className="py-20 md:py-24">
       <div className="container mx-auto px-4 md:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-20">
@@ -54,12 +57,36 @@ export const PlataformasPage = ({ navigate }) => (
           </div>
         </div>
 
+        {/* Section: Jornada do Membro */}
+        <div className="mb-24">
+           <SectionHeader 
+             badge="Ciclo de Vida"
+             title="Jornada do"
+             titleAccent="Membro"
+             description="Fluxo contínuo de valor e prestação de contas dentro do Pacto Global."
+           />
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+              {JORNADA_MEMBRO.map((item, idx) => {
+                 const Icon = JORNADA_ICONS[idx];
+                 return (
+                    <div key={item.id} className="bg-un-surface p-8 rounded-[2.5rem] border border-gray-100 text-center space-y-4">
+                       <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-sm">
+                          <Icon className="w-6 h-6 text-un-blue" />
+                       </div>
+                       <h4 className="text-lg font-display font-black text-un-blue uppercase tracking-tighter leading-tight">{item.title}</h4>
+                       <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                    </div>
+                 );
+              })}
+           </div>
+        </div>
+
         {/* Management Section */}
         <div className="bg-un-blue-deep rounded-[3rem] p-8 md:p-16 text-white relative overflow-hidden">
            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
            <div className="relative z-10 max-w-5xl mx-auto">
               <div className="text-center mb-16">
-                 <h2 className="text-3xl md:text-5xl font-display font-black uppercase mb-4 tracking-tighter">Gestão <span className="text-un-gold">Bipartite</span></h2>
+                 <h2 className="text-3xl md:text-5xl font-display font-black uppercase mb-4 tracking-tighter text-white">Gestão <span className="text-un-gold">Bipartite</span></h2>
                  <p className="text-white/60">Um modelo de governança colaborativo e transparente.</p>
               </div>
 
@@ -70,7 +97,7 @@ export const PlataformasPage = ({ navigate }) => (
                     </div>
                     <div>
                        <h4 className="text-xl font-bold mb-2">Pacto Global</h4>
-                       <p className="text-white/60 text-sm leading-relaxed">Conta com uma pessoa técnica gestora da área de Impacto para coordenação metodológica e alinhamento com a sede em NY.</p>
+                       <p className="text-white/60 text-sm leading-relaxed">Gestão técnica por área de Impacto para coordenação metodológica e alinhamento com NY.</p>
                     </div>
                  </div>
 
@@ -80,21 +107,15 @@ export const PlataformasPage = ({ navigate }) => (
                     </div>
                     <div>
                        <h4 className="text-xl font-bold mb-2">Empresa Coordenadora</h4>
-                       <p className="text-white/60 text-sm leading-relaxed">A pessoa representante é eleita trienalmente via votação pelas empresas participantes da própria Plataforma.</p>
+                       <p className="text-white/60 text-sm leading-relaxed">Representante eleito trienalmente para viabilizar e liderar as ações práticas no setor privado.</p>
                     </div>
                  </div>
-              </div>
-
-              <div className="mt-12 p-6 bg-un-gold/10 rounded-2xl border border-un-gold/20 flex items-center gap-4 text-un-gold text-sm font-medium">
-                 <Info className="w-5 h-5 shrink-0" />
-                 Este modelo garante que as iniciativas sejam relevantes tanto tecnicamente quanto para a realidade das operações de negócio.
               </div>
            </div>
         </div>
       </div>
     </section>
 
-    {/* Footer CTA Section */}
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4 text-center">
          <Button 
