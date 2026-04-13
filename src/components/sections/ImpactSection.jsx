@@ -1,20 +1,13 @@
 import React from 'react';
-import { Building2, Globe, Landmark, MapPin, Users, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '../../utils/cn';
 import { SectionHeader } from '../ui/SectionHeader';
 import { Button } from '../ui/Button';
+import { IMPACT_STATS } from '../../data/constants';
 
-// --- COMPONENTE: SEÇÃO DE IMPACTO ---
+// --- COMPONENTE: SEÇÃO DE IMPACTO (DATA DRIVEN) ---
 
 export const ImpactSection = () => {
-  const stats = [
-    { id: 1, value: "22.485", label: "Empresas", sub: "Comprometidas", icon: Building2, color: "text-un-gold" },
-    { id: 2, value: "167", label: "Países", sub: "Alcance Global", icon: Globe, color: "text-un-green" },
-    { id: 3, value: "3.024", label: "Não Empresariais", sub: "Organizações", icon: Landmark, color: "text-un-blue-3" },
-    { id: 4, value: "62", label: "Redes Locais", sub: "Atuação Regional", icon: MapPin, color: "text-un-gold" },
-    { id: 5, value: "25.509", label: "Participantes", sub: "Total da Rede", icon: Users, color: "text-white" },
-  ];
-
   return (
     <section className="relative py-12 md:py-20 lg:py-32 bg-un-blue overflow-hidden">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -48,7 +41,7 @@ export const ImpactSection = () => {
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-12 border-t border-white/10 pt-8 md:pt-12">
-          {stats.map((stat) => (
+          {IMPACT_STATS.map((stat) => (
             <div key={stat.id} className="flex flex-col group cursor-default">
               <div className="mb-2 md:mb-4 opacity-50 group-hover:opacity-100 transition-opacity duration-300">
                 <stat.icon className={cn("w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8", stat.color)} />
