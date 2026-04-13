@@ -25,6 +25,11 @@ import { ConhecimentoPage } from './pages/ConhecimentoPage';
 import { ParticiparPage } from './pages/ParticiparPage';
 import { CopPage } from './pages/CopPage';
 
+// Ambição 2030 Pages
+import { AmbicaoPage } from './pages/ambicao/AmbicaoPage';
+import { MovimentosPage } from './pages/ambicao/MovimentosPage';
+import { PlataformasPage } from './pages/ambicao/PlataformasPage';
+
 const App = () => {
   const { currentRoute, navigate } = useHashRoute('home');
 
@@ -33,10 +38,10 @@ const App = () => {
   }, [currentRoute]);
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-un-gold selection:text-un-blue flex flex-col">
+    <div className=\"min-h-screen bg-white font-sans selection:bg-un-gold selection:text-un-blue flex flex-col\">
       <CapsuleHeader onRouteChange={navigate} currentRoute={currentRoute} />
 
-      <main className="flex-1">
+      <main className=\"flex-1\">
         {currentRoute === 'home' && <HomeContent navigate={navigate} />}
         {currentRoute === 'sobre' && <SobrePage />}
         {currentRoute === 'eventos' && <EventosPage />}
@@ -46,6 +51,11 @@ const App = () => {
         {currentRoute === 'conhecimento' && <ConhecimentoPage />}
         {currentRoute === 'participar' && <ParticiparPage />}
         {currentRoute === 'cop' && <CopPage />}
+
+        {/* Ambição 2030 Routes */}
+        {currentRoute === 'ambicao' && <AmbicaoPage navigate={navigate} />}
+        {currentRoute === 'movimentos' && <MovimentosPage navigate={navigate} />}
+        {currentRoute === 'plataformas' && <PlataformasPage navigate={navigate} />}
       </main>
 
       <Footer />
