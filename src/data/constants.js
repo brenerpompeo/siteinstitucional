@@ -17,6 +17,7 @@ export const ROUTES = {
   ambicao: '#/ambicao',
   movimentos: '#/ambicao/movimentos',
   plataformas: '#/ambicao/plataformas',
+  atuacao: '#/atuacao',
 };
 
 export const HASH_TO_ROUTE = Object.fromEntries(
@@ -221,15 +222,15 @@ export const MENU_DESTAQUES = [
 
 export const MENU_EXPLORAR = [
   {
-    label: "Nossa Agenda",
-    id: "agenda",
+    label: "Nossa Atuação",
+    id: "atuacao",
     icon: Target,
     subItems: [
-      { id: "agenda", label: "10 Princípios" },
-      { id: "agenda", label: "ODS" },
-      { id: "ambicao", label: "Ambição 2030" },
+      { id: "atuacao", label: "Pilares do Pacto" },
+      { id: "ambicao", label: "Estratégia 2030" },
       { id: "movimentos", label: "Movimentos" },
-      { id: "plataformas", label: "Plataformas de Ação" }
+      { id: "plataformas", label: "Plataformas de Ação" },
+      { id: "programas", label: "Projetos" }
     ]
   },
   {
@@ -331,11 +332,11 @@ export const INSTITUTIONAL_STATS = {
 };
 
 export const IMPACT_STATS = [
-  { id: 1, value: \"22.485\", label: \"Empresas\", sub: \"Comprometidas\", icon: Building2, color: \"text-un-gold\" },
-  { id: 2, value: \"167\", label: \"Países\", sub: \"Alcance Global\", icon: Globe, color: \"text-un-green\" },
-  { id: 3, value: \"3.024\", label: \"Não Empresariais\", sub: \"Organizações\", icon: Landmark, color: \"text-un-blue-3\" },
-  { id: 4, value: \"62\", label: \"Redes Locais\", sub: \"Atuação Regional\", icon: MapPin, color: \"text-un-gold\" },
-  { id: 5, value: \"25.509\", label: \"Participantes\", sub: \"Total da Rede\", icon: Users, color: \"text-white\" },
+  { id: 1, value: "22.485", label: "Empresas", sub: "Comprometidas", icon: Building2, color: "text-un-gold" },
+  { id: 2, value: "167", label: "Países", sub: "Alcance Global", icon: Globe, color: "text-un-green" },
+  { id: 3, value: "3.024", label: "Não Empresariais", sub: "Organizações", icon: Landmark, color: "text-un-blue-3" },
+  { id: 4, value: "62", label: "Redes Locais", sub: "Atuação Regional", icon: MapPin, color: "text-un-gold" },
+  { id: 5, value: "25.509", label: "Participantes", sub: "Total da Rede", icon: Users, color: "text-white" },
 ];
 
 export const AMBICAO_STATS = {
