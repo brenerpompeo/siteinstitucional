@@ -1,4 +1,4 @@
-import { Globe, Calendar, FileText, Target, Briefcase, BookOpen, Users, Building2, ShieldCheck, LogIn } from 'lucide-react';
+import { Globe, Calendar, FileText, Target, Briefcase, BookOpen, Users, Building2, ShieldCheck, LogIn, Landmark, MapPin } from 'lucide-react';
 
 export const ROUTES = {
   home: '#/',
@@ -218,7 +218,7 @@ export const MENU_EXPLORAR = [
     id: "agenda",
     icon: Target,
     subItems: [
-      { id: "agenda", label: "10 Princípios" }, // Typo fix: user asked for "10 Princípio", making it plural for correctness
+      { id: "agenda", label: "10 Princípios" },
       { id: "agenda", label: "ODS" },
       { id: "agenda", label: "Ambição 2030" },
       { id: "agenda", label: "Movimentos" },
@@ -278,7 +278,7 @@ export const MENU_PARTICIPAR = [
     id: "cop",
     icon: FileText,
     subItems: [
-      { id: "cop", label: "O que é CoP" }, // Link mantido
+      { id: "cop", label: "O que é CoP" },
       { id: "cop", label: "Como enviar a CoP" },
       { id: "cop", label: "Prazos e Orientações" },
       { id: "cop", label: "FAQ" }
@@ -315,8 +315,17 @@ export const HEADER_CONHECIMENTO = [
 
 // Institutional Stats
 export const INSTITUTIONAL_STATS = {
-  globalParticipants: '25k+',
-  localNetworks: '67',
-  brasilParticipants: '1.900',
-  brasilInitiatives: '50'
+  globalParticipants: '25.509',
+  localNetworks: '62',
+  countries: '167',
+  brasilParticipants: '2.000+',
+  nonBusiness: '3.024'
 };
+
+export const IMPACT_STATS = [
+  { id: 1, value: "22.485", label: "Empresas", sub: "Comprometidas", icon: Building2, color: "text-un-gold" },
+  { id: 2, value: "167", label: "Países", sub: "Alcance Global", icon: Globe, color: "text-un-green" },
+  { id: 3, value: "3.024", label: "Não Empresariais", sub: "Organizações", icon: Landmark, color: "text-un-blue-3" },
+  { id: 4, value: "62", label: "Redes Locais", sub: "Atuação Regional", icon: MapPin, color: "text-un-gold" },
+  { id: 5, value: "25.509", label: "Participantes", sub: "Total da Rede", icon: Users, color: "text-white" },
+];
