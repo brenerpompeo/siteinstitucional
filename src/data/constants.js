@@ -319,7 +319,8 @@ export const INSTITUTIONAL_STATS = {
   localNetworks: '62',
   countries: '167',
   brasilParticipants: '2.000+',
-  nonBusiness: '3.024'
+  nonBusiness: '3.024',
+  brasilInitiatives: '50+'
 };
 
 export const IMPACT_STATS = [
